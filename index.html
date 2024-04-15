@@ -3,13 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Remix Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+      integrity="sha512-MqL4+Io386IOPMKKyplKII0pVW5e+kb+PI/I3N87G3fHIfrgNNsRpzIXEi+0MQC0sR9xZNqZqCYVcC61fL5+Vg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Style -->
     <link rel="stylesheet" href="./css/styles.css" />
     <title>Cash Progress</title>
   </head>
   <body>
     <main>
       <div class="container">
-        <div class="goal__container">
+        <div class="goal__container hide">
           <h1 class="title">New goal</h1>
 
           <form class="goal__form" id="form">
@@ -26,7 +35,13 @@
 
             <div class="goal__data">
               <label for="goal__amount">Goal amount</label>
-              <input id="goal__amount" type="number" placeholder="Amount of your target" minlength="1" required />
+              <input
+                id="goal__amount"
+                type="number"
+                placeholder="Amount of your target"
+                minlength="1"
+                required
+              />
             </div>
 
             <div class="goal__data">
@@ -78,6 +93,50 @@
           <button class="btn large-btn" id="button" form="form" type="submit">
             Crate goal
           </button>
+        </div>
+
+        <div class="goal__list">
+          <div class="goal__item">
+            <h1 class="title">MacBook Pro</h1>
+            <div class="goal__accumulate">
+              <button class="btn small-btn">
+                <i class="ri-corner-left-up-line"></i>
+              </button>
+              <input
+                class="goal__amount"
+                type="number"
+                id="amount"
+                placeholder="0"
+                value="0"
+              />
+              <button class="btn small-btn">
+                <i class="ri-corner-right-down-line"></i>
+              </button>
+            </div>
+
+            <div class="goal__progress">
+              <progress class="goal__progressbar" max="100" value="20">
+                70%
+              </progress>
+
+              <div class="goal__wrapper">
+                <span id="goal-current-span">2000$</span>
+                <span id="goal-finish-span">20000$</span>
+              </div>
+            </div>
+
+            <div class="goal__options">
+              <button class="btn small-btn" id="remove">
+                <i class="ri-delete-bin-line"></i>
+              </button>
+              <button class="btn small-btn" id="history">
+                <i class="ri-list-view"></i>
+              </button>
+              <button class="btn small-btn" id="edit">
+                <i class="ri-edit-line"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>

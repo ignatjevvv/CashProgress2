@@ -52,9 +52,12 @@ const addNewGoal = () => {
   windowStart.classList.toggle('hide');
 
   const goalObj = {
+    id: `${goalNameInput.value.toLowerCase().split(' ').join('-')}-${+new Date()}`,
     name: goalNameInput.value,
     amount: goalAmountInput.value,
     currency: getActiveItemRadio(),
+    accumulation: 0,
+    history: {},
   };
 
   goalData.push(goalObj);
