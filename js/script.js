@@ -14,6 +14,7 @@ btn.addEventListener('click', () => {
   addNewGoal();
 });
 
+/// Added class "active" for label currenct type
 const addClassActiveForRadio = () => {
   radiosCurrencyBtn.forEach(item => {
     item.addEventListener('click', e => {
@@ -23,6 +24,7 @@ const addClassActiveForRadio = () => {
   });
 };
 
+/// Get element who has active class
 const getActiveItemRadio = () => {
   for (let radio of radiosCurrencyBtn) {
     if (radio.checked) {
@@ -31,12 +33,14 @@ const getActiveItemRadio = () => {
   }
 };
 
+/// Remove active class from buttons that are not selected
 const removeClassActiveRadio = () => {
   currencyTypeRadio.forEach(item => {
     item.classList.remove('active');
   });
 };
 
+/// Get value from each item and add it in data array
 const addNewGoal = () => {
   const goalObj = {
     name: goalNameInput.value,
