@@ -74,7 +74,7 @@ body {
 .goal__currency-label {
   font-size: 2rem;
 }
-.goal__item {
+.goal__task {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -4,22 +4,22 @@ const btn = document.getElementById('button');
 const windowStart = document.querySelector('.goal__container');
 const goalFormStart = document.getElementById('form');
 const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
-
 const goalNameInput = document.getElementById('goal__name');
 const goalAmountInput = document.getElementById('goal__amount');
 const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
+const goalListContainer = document.getElementById('goal-lists');
+
+const withdrawBtn = document.getElementById('withdraw-btn');
+const depositBtn = document.getElementById('deposit-btn');
 
 const goalData = [];
 const currentGoal = {};
-
-// btn.addEventListener('click', () => {
-//   const inputsValue = goalNameInput.value || goalAmountInput.value;
-
-//   if (inputsValue) {
-//     addNewGoal();
-//     clearInputs();
-//   }
-// });
+const currencyList = {
+  USD: '$',
+  EUR: '€',
+  UAH: '₴',
+  BIT: 'B',
+};
 
 /// Added class "active" for label currenct type
 const addClassActiveForRadio = () => {
@@ -61,6 +61,7 @@ const addNewGoal = () => {
   };
 
   goalData.push(goalObj);
+  renderListGoal();
   console.log(goalData);
 };
 
@@ -79,3 +80,63 @@ goalFormStart.addEventListener('submit', e => {
 });
 
 addClassActiveForRadio();
+
+const renderListGoal = () => {
+  goalData.forEach(({ id, name, amount, currency, accumulation }) => {
+    goalListContainer.innerHTML += `
+    <div class="goal__task" id="${id}">
+    <h1 class="title">${name}</h1>
+    <div class="goal__accumulate">
+      <button id="withdraw-btn" onclick="withdraw(this)" class="btn small-btn">
+        <i class="ri-corner-left-up-line"></i>
+      </button>
+      <input
+        class="goal__amount"
+        type="number"
+        id="amount"
+        placeholder="0"
+        value="0"
+      />
+      <button id="deposit-btn" onclick="deposit(this)" class="btn small-btn">
+        <i class="ri-corner-right-down-line"></i>
+      </button>
+    </div>
+
+    <div class="goal__progress">
+      <progress
+        class="goal__progressbar"
+        max="100"
+        value="0"
+      ></progress>
+
+      <div class="goal__wrapper">
+        <span id="goal-current-span">${accumulation}${currencyList[currency]}</span>
+        <span id="goal-finish-span">${amount}${currencyList[currency]}</span>
+      </div>
+    </div>
+
+    <div class="goal__options">
+      <button class="btn small-btn" id="remove">
+        <i class="ri-delete-bin-line"></i>
+      </button>
+      <button class="btn small-btn" id="history">
+        <i class="ri-list-view"></i>
+      </button>
+      <button class="btn small-btn" id="edit">
+        <i class="ri-edit-line"></i>
+      </button>
+    </div>
+    </div>
+  `;
+  });
+};
+
+const deposit = buttonEl => {
+  console.log(buttonEl.parentElement.parentElement.id);
+};
+
+const withdraw = buttonEl => {
+  console.log(buttonEl.parentElement.parentElement.id);
+};
+
+// 62000 / 70000 * 100;

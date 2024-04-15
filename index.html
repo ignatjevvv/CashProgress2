@@ -18,7 +18,7 @@
   <body>
     <main>
       <div class="container">
-        <div class="goal__container hide">
+        <div class="goal__container">
           <h1 class="title">New goal</h1>
 
           <form class="goal__form" id="form">
@@ -95,8 +95,8 @@
           </button>
         </div>
 
-        <div class="goal__list">
-          <div class="goal__item">
+        <div class="goal__list" id="goal-lists">
+          <!-- <div class="goal__task">
             <h1 class="title">MacBook Pro</h1>
             <div class="goal__accumulate">
               <button class="btn small-btn">
@@ -115,13 +115,15 @@
             </div>
 
             <div class="goal__progress">
-              <progress class="goal__progressbar" max="100" value="20">
-                70%
-              </progress>
+              <progress
+                class="goal__progressbar"
+                max="100"
+                value="0"
+              ></progress>
 
               <div class="goal__wrapper">
-                <span id="goal-current-span">2000$</span>
-                <span id="goal-finish-span">20000$</span>
+                <span id="goal-current-span">0</span>
+                <span id="goal-finish-span">0</span>
               </div>
             </div>
 
@@ -136,7 +138,7 @@
                 <i class="ri-edit-line"></i>
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </main>
