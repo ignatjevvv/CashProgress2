@@ -136,3 +136,7 @@ input::-webkit-inner-spin-button {
   border: 0.3rem solid #ceff00;
   transition: all 0.1s;
 }
+
+.hide {
+  display: none;
+}

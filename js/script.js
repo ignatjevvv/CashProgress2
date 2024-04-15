@@ -1,6 +1,8 @@
 'use strict';
 
 const btn = document.getElementById('button');
+const windowStart = document.querySelector('.goal__container');
+const goalFormStart = document.getElementById('form');
 const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
 
 const goalNameInput = document.getElementById('goal__name');
@@ -10,10 +12,14 @@ const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
 const goalData = [];
 const currentGoal = {};
 
-btn.addEventListener('click', () => {
-  addNewGoal();
-  clearInputs();
-});
+// btn.addEventListener('click', () => {
+//   const inputsValue = goalNameInput.value || goalAmountInput.value;
+
+//   if (inputsValue) {
+//     addNewGoal();
+//     clearInputs();
+//   }
+// });
 
 /// Added class "active" for label currenct type
 const addClassActiveForRadio = () => {
@@ -43,6 +49,8 @@ const removeClassActiveRadio = () => {
 
 /// Get value from each item and add it in data array
 const addNewGoal = () => {
+  windowStart.classList.toggle('hide');
+
   const goalObj = {
     name: goalNameInput.value,
     amount: goalAmountInput.value,
@@ -59,5 +67,12 @@ const clearInputs = () => {
   goalAmountInput.value = '';
   removeClassActiveRadio();
 };
+
+goalFormStart.addEventListener('submit', e => {
+  e.preventDefault();
+
+  addNewGoal();
+  clearInputs();
+});
 
 addClassActiveForRadio();
