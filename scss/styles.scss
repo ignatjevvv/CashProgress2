@@ -139,6 +139,13 @@ input[type="radio"]:checked {
     border-color: #007bff; /* Цвет рамки при выборе */
 }
 
+// Remove arrows/spinner from input value number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 .active {
     border: .3rem solid #ceff00;

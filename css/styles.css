@@ -126,6 +126,12 @@ input[type=radio]:checked {
   border-color: #007bff; /* Цвет рамки при выборе */
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .active {
   border: 0.3rem solid #ceff00;
   transition: all 0.1s;
