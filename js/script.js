@@ -12,6 +12,7 @@ const currentGoal = {};
 
 btn.addEventListener('click', () => {
   addNewGoal();
+  clearInputs();
 });
 
 /// Added class "active" for label currenct type
@@ -50,6 +51,13 @@ const addNewGoal = () => {
 
   goalData.push(goalObj);
   console.log(goalData);
+};
+
+/// Clear input fields from values
+const clearInputs = () => {
+  goalNameInput.value = '';
+  goalAmountInput.value = '';
+  removeClassActiveRadio();
 };
 
 addClassActiveForRadio();
