@@ -8,9 +8,12 @@ const goalNameInput = document.getElementById('goal__name');
 const goalAmountInput = document.getElementById('goal__amount');
 const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
 const goalListContainer = document.getElementById('goal-lists');
+const goalAmountInputItem = document.getElementById('amount');
 
 const withdrawBtn = document.getElementById('withdraw-btn');
 const depositBtn = document.getElementById('deposit-btn');
+
+const progressBar = document.getElementById('goal-progressbar');
 
 const goalData = [];
 const currentGoal = {};
@@ -57,12 +60,14 @@ const addNewGoal = () => {
     amount: goalAmountInput.value,
     currency: getActiveItemRadio(),
     accumulation: 0,
+    percentPointToFinish: 0,
     history: {},
   };
 
   goalData.push(goalObj);
   renderListGoal();
   console.log(goalData);
+  console.log(progressBar);
 };
 
 /// Clear input fields from values
@@ -82,8 +87,10 @@ goalFormStart.addEventListener('submit', e => {
 addClassActiveForRadio();
 
 const renderListGoal = () => {
-  goalData.forEach(({ id, name, amount, currency, accumulation }) => {
-    goalListContainer.innerHTML += `
+  goalListContainer.innerHTML = '';
+  goalData.forEach(
+    ({ id, name, amount, currency, accumulation, percentPointToFinish }) => {
+      goalListContainer.innerHTML += `
     <div class="goal__task" id="${id}">
     <h1 class="title">${name}</h1>
     <div class="goal__accumulate">
@@ -105,8 +112,9 @@ const renderListGoal = () => {
     <div class="goal__progress">
       <progress
         class="goal__progressbar"
+        id="goal-progressbar"
         max="100"
-        value="0"
+        value="${percentPointToFinish}"
       ></progress>
 
       <div class="goal__wrapper">
@@ -116,7 +124,7 @@ const renderListGoal = () => {
     </div>
 
     <div class="goal__options">
-      <button class="btn small-btn" id="remove">
+      <button class="btn small-btn" onclick="remove(this)" id="remove">
         <i class="ri-delete-bin-line"></i>
       </button>
       <button class="btn small-btn" id="history">
@@ -128,15 +136,53 @@ const renderListGoal = () => {
     </div>
     </div>
   `;
+    },
+  );
+};
+
+const accumulateDeposit = (searchId, idBtn) => {
+  const totalItem = goalData.find(item => {
+    if (item.id === searchId) {
+      return item;
+    }
   });
+
+  const sum = document.getElementById('amount').value;
+
+  if (idBtn === 'withdraw-btn') {
+    if (totalItem.accumulation < sum) {
+      console.log(`Withdrawals add to your savings limit!`);
+      return;
+    }
+    totalItem.accumulation -= +sum;
+  } else {
+    totalItem.accumulation += +sum;
+  }
+
+  totalItem.percentPointToFinish = (
+    (totalItem.accumulation / totalItem.amount) *
+    100
+  ).toFixed(2);
+
+  renderListGoal();
+  console.log(goalData);
+};
+
+const removeGoal = goalID => {
+  const indexItem = goalData.findIndex(item => item.id === goalID);
+  goalData.splice(indexItem, 1);
+  console.log(goalData);
+  renderListGoal();
 };
 
 const deposit = buttonEl => {
-  console.log(buttonEl.parentElement.parentElement.id);
+  accumulateDeposit(buttonEl.parentElement.parentElement.id, buttonEl.id);
 };
 
 const withdraw = buttonEl => {
-  console.log(buttonEl.parentElement.parentElement.id);
+  accumulateDeposit(buttonEl.parentElement.parentElement.id, buttonEl.id);
 };
 
-// 62000 / 70000 * 100;
+const remove = buttonEl => {
+  removeGoal(buttonEl.parentElement.parentElement.id);
+};
