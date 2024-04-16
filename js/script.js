@@ -53,6 +53,7 @@ const removeClassActiveRadio = () => {
 /// Get value from each item and add it in data array
 const addNewGoal = () => {
   windowStart.classList.toggle('hide');
+  goalListContainer.classList.toggle('hide');
 
   const goalObj = {
     id: `${goalNameInput.value.toLowerCase().split(' ').join('-')}-${+new Date()}`,
@@ -88,6 +89,10 @@ addClassActiveForRadio();
 
 const renderListGoal = () => {
   goalListContainer.innerHTML = '';
+  goalListContainer.innerHTML = `
+      <button class="btn large-btn" onclick="newgoal()" id="new-goal-item" type="button">
+          New goal
+      </button>`;
   goalData.forEach(
     ({ id, name, amount, currency, accumulation, percentPointToFinish }) => {
       goalListContainer.innerHTML += `
@@ -147,7 +152,9 @@ const accumulateDeposit = (searchId, idBtn) => {
     }
   });
 
-  const sum = document.getElementById('amount').value;
+  const sum = document
+    .getElementById(searchId)
+    .getElementsByTagName('input')[0].value;
 
   if (idBtn === 'withdraw-btn') {
     if (totalItem.accumulation < sum) {
@@ -173,6 +180,11 @@ const removeGoal = goalID => {
   goalData.splice(indexItem, 1);
   console.log(goalData);
   renderListGoal();
+};
+
+const newgoal = () => {
+  windowStart.classList.toggle('hide');
+  goalListContainer.classList.toggle('hide');
 };
 
 const deposit = buttonEl => {

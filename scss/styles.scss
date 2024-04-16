@@ -24,6 +24,7 @@ body {
     font-size: 3.2rem;
     font-family: Arial, sans-serif;
     font-weight: 400;
+    word-wrap: break-word;
     color: white;
 }
 
@@ -82,6 +83,11 @@ body {
         }
     }
 
+    &__list {
+        display: flex;
+        gap: 2rem;
+    }
+
     &__task {
         display: flex;
         flex-direction: column;
@@ -92,7 +98,6 @@ body {
         border-radius: 1.5rem;
         padding: 4rem;
     }
-
 
     &__accumulate {
         display: flex;

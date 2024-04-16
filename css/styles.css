@@ -25,6 +25,7 @@ body {
   font-size: 3.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
+  word-wrap: break-word;
   color: white;
 }
 
@@ -73,6 +74,10 @@ body {
 }
 .goal__currency-label {
   font-size: 2rem;
+}
+.goal__list {
+  display: flex;
+  gap: 2rem;
 }
 .goal__task {
   display: flex;
