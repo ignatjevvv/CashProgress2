@@ -7,7 +7,8 @@ const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
 const goalNameInput = document.getElementById('goal__name');
 const goalAmountInput = document.getElementById('goal__amount');
 const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
-const goalListContainer = document.getElementById('goal-lists');
+const goalListContainer = document.getElementById('container-goal');
+const goalList = document.getElementById('goal-lists'); 
 const goalAmountInputItem = document.getElementById('amount');
 const dialogWindows = document.getElementById('dialog');
 
@@ -16,7 +17,63 @@ const depositBtn = document.getElementById('deposit-btn');
 
 const progressBar = document.getElementById('goal-progressbar');
 
-const goalData = [];
+const goalData = [
+  {
+    id: '3000-1716649489315',
+    name: 'MacBook Air M2',
+    amount: '1200',
+    currency: 'USD',
+    accumulation: 600,
+    percentPointToFinish: 50,
+    history: {},
+  },
+  {
+    id: '3000-1716649489317',
+    name: 'iPhone 14 Pro',
+    amount: '900',
+    currency: 'USD',
+    accumulation: 450,
+    percentPointToFinish: 50,
+    history: {},
+  },
+  {
+    id: '3000-1716649489317',
+    name: 'Tesla Model X',
+    amount: '45000',
+    currency: 'USD',
+    accumulation: 15000,
+    percentPointToFinish: 50,
+    history: {},
+  },
+  {
+    id: '3000-1716649489315',
+    name: 'MacBook Air M2',
+    amount: '1200',
+    currency: 'USD',
+    accumulation: 600,
+    percentPointToFinish: 50,
+    history: {},
+  },
+  {
+    id: '3000-1716649489317',
+    name: 'iPhone 14 Pro',
+    amount: '900',
+    currency: 'USD',
+    accumulation: 450,
+    percentPointToFinish: 50,
+    history: {},
+  },
+  {
+    id: '3000-1716649489317',
+    name: 'Tesla Model X',
+    amount: '45000',
+    currency: 'USD',
+    accumulation: 15000,
+    percentPointToFinish: 50,
+    history: {},
+  },
+];
+
 const currentGoal = {};
 const currencyList = {
   USD: '$',
@@ -24,18 +81,6 @@ const currencyList = {
   UAH: '₴',
   BTC: 'B',
 };
-
-if (!goalData.length) {
-  dialogWindows.showModal();
-}
-
-// dialogWindows.showModal();
-
-// const closeDialogWindows = () => {
-//   dialogWindows.close();
-// };
-
-// btn.addEventListener('click', closeDialogWindows);
 
 /// Added class "active" for label currenct type
 const addClassActiveForRadio = () => {
@@ -65,8 +110,6 @@ const removeClassActiveRadio = () => {
 
 /// Get value from each item and add it in data array
 const addNewGoal = () => {
-  // windowStart.classList.toggle('hide');
-  // dialogWindows.showModal();
   goalListContainer.classList.remove('hide');
 
   const goalObj = {
@@ -101,14 +144,14 @@ goalFormStart.addEventListener('submit', e => {
 addClassActiveForRadio();
 
 const renderListGoal = () => {
-  goalListContainer.innerHTML = '';
-  goalListContainer.innerHTML = `
-      <button class="btn large-btn" onclick="newgoal()" id="new-goal-item" type="button">
-          New goal
-      </button>`;
+  goalList.innerHTML = '';
+  // goalListContainer.innerHTML = `
+  //     <button class="btn large-btn" onclick="newgoal()" id="new-goal-item" type="button">
+  //         New goal
+  //     </button>`;
   goalData.forEach(
     ({ id, name, amount, currency, accumulation, percentPointToFinish }) => {
-      goalListContainer.innerHTML += `
+      goalList.innerHTML += `
     <div class="goal__task" id="${id}">
     <h1 class="title">${name}</h1>
     <div class="goal__accumulate">
@@ -222,9 +265,7 @@ const removeGoal = goalID => {
 };
 
 const newgoal = () => {
-  // windowStart.classList.toggle('hide');
   dialogWindows.showModal();
-  // goalListContainer.classList.toggle('hide');
 };
 
 const deposit = buttonEl => {
@@ -238,3 +279,11 @@ const withdraw = buttonEl => {
 const remove = buttonEl => {
   removeGoal(buttonEl.parentElement.parentElement.id);
 };
+
+renderListGoal();
+if (!goalData.length) {
+  dialogWindows.showModal();
+} else {
+  renderListGoal();
+  goalListContainer.classList.toggle('hide');
+}

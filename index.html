@@ -98,7 +98,20 @@
           </div>
         </dialog>
 
-        <div class="goal__list hide" id="goal-lists"></div>
+        <section id="goal-list">
+          <div class="container__goal hide" id="container-goal">
+            <button
+              class="btn large-btn"
+              onclick="newgoal()"
+              id="new-goal-item"
+              type="button"
+            >
+              New goal
+            </button>
+            <hr>
+            <div class="goal__list" id="goal-lists"></div>
+          </div>
+        </section>
       </div>
     </main>
     <script src="./js/script.js"></script>

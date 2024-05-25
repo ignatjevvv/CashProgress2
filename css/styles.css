@@ -15,11 +15,15 @@ body {
 }
 
 .container {
-  display: flex;
-  width: 100;
+  width: 1280px;
   height: 100vh;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+}
+.container__goal {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 dialog {
@@ -31,7 +35,8 @@ dialog {
 dialog:-internal-dialog-in-top-layer::backdrop {
   position: fixed;
   inset: 0px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
 }
 
 dialog[open] {
@@ -99,7 +104,8 @@ dialog:not([open]) {
 }
 .goal__list {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 4rem;
 }
 .goal__task {
   display: flex;
