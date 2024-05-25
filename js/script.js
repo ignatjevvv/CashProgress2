@@ -9,6 +9,7 @@ const goalAmountInput = document.getElementById('goal__amount');
 const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
 const goalListContainer = document.getElementById('goal-lists');
 const goalAmountInputItem = document.getElementById('amount');
+const dialogWindows = document.getElementById('dialog');
 
 const withdrawBtn = document.getElementById('withdraw-btn');
 const depositBtn = document.getElementById('deposit-btn');
@@ -21,8 +22,20 @@ const currencyList = {
   USD: '$',
   EUR: '€',
   UAH: '₴',
-  BIT: 'B',
+  BTC: 'B',
 };
+
+if (!goalData.length) {
+  dialogWindows.showModal();
+}
+
+// dialogWindows.showModal();
+
+// const closeDialogWindows = () => {
+//   dialogWindows.close();
+// };
+
+// btn.addEventListener('click', closeDialogWindows);
 
 /// Added class "active" for label currenct type
 const addClassActiveForRadio = () => {
@@ -52,8 +65,9 @@ const removeClassActiveRadio = () => {
 
 /// Get value from each item and add it in data array
 const addNewGoal = () => {
-  windowStart.classList.toggle('hide');
-  goalListContainer.classList.toggle('hide');
+  // windowStart.classList.toggle('hide');
+  // dialogWindows.showModal();
+  goalListContainer.classList.remove('hide');
 
   const goalObj = {
     id: `${goalNameInput.value.toLowerCase().split(' ').join('-')}-${+new Date()}`,
@@ -79,8 +93,7 @@ const clearInputs = () => {
 };
 
 goalFormStart.addEventListener('submit', e => {
-  e.preventDefault();
-
+  // e.preventDefault();
   addNewGoal();
   clearInputs();
 });
@@ -129,7 +142,7 @@ const renderListGoal = () => {
     </div>
 
     <div class="goal__options">
-      <button class="btn small-btn" onclick="remove(this)" id="remove">
+      <button class="btn small-btn" id="remove" onclick="dialogWindow(this)">
         <i class="ri-delete-bin-line"></i>
       </button>
       <button class="btn small-btn" id="history">
@@ -138,6 +151,20 @@ const renderListGoal = () => {
       <button class="btn small-btn" id="edit">
         <i class="ri-edit-line"></i>
       </button>
+    </div>
+
+    <div class="goal__dialog hide">
+      <p class="goal__dialog-message">
+        Do you really wont to remove your progress ?
+      </p>
+      <div class="goal__dialog-buttons">
+        <button class="btn" id="remove-goal" onclick="remove(this)">
+          Remove
+        </button>
+        <button class="btn" id="discard-change" onclick="dialogWindow(this)">
+          Discard
+        </button>
+      </div>
     </div>
     </div>
   `;
@@ -175,6 +202,18 @@ const accumulateDeposit = (searchId, idBtn) => {
   console.log(goalData);
 };
 
+const dialogWindow = buttonEl => {
+  const parentDiv = buttonEl.parentElement.parentElement;
+  const dialogWindow = parentDiv.querySelector('.goal__dialog');
+
+  if (!dialogWindow) {
+    parentDiv.classList.add('hide');
+    return;
+  }
+
+  dialogWindow.classList.remove('hide');
+};
+
 const removeGoal = goalID => {
   const indexItem = goalData.findIndex(item => item.id === goalID);
   goalData.splice(indexItem, 1);
@@ -183,8 +222,9 @@ const removeGoal = goalID => {
 };
 
 const newgoal = () => {
-  windowStart.classList.toggle('hide');
-  goalListContainer.classList.toggle('hide');
+  // windowStart.classList.toggle('hide');
+  dialogWindows.showModal();
+  // goalListContainer.classList.toggle('hide');
 };
 
 const deposit = buttonEl => {
