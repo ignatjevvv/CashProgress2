@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "https://unpkg.com/open-props";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -55,6 +56,27 @@ dialog:not([open]) {
   color: white;
 }
 
+.statistics__container {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 200px;
+  background-color: #E3FF73;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 0 0 2rem 2rem;
+}
+.statistics__count {
+  font-size: 8rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+}
+.statistics__description {
+  font-size: 2.4rem;
+  font-family: "Manrope", sans-serif;
+}
+
 .goal__container {
   display: flex;
   flex-direction: column;
@@ -62,13 +84,20 @@ dialog:not([open]) {
   color: white;
   background-color: black;
   width: 400px;
-  min-height: 600px;
+  min-height: 700px;
   padding: 4rem;
   border-radius: 1.5rem;
   border: 1px solid #0C0C0C;
 }
 .goal__container .btn {
   margin-left: auto;
+}
+.goal__status {
+  margin: 0 auto;
+}
+.goal__status i {
+  font-size: 6rem;
+  color: #E3FF73;
 }
 .goal__data {
   display: flex;
@@ -145,7 +174,7 @@ dialog:not([open]) {
   color: #CCCCCC;
   justify-content: space-between;
   font-size: 2rem;
-  font-family: Helvetica, sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 .goal__dialog {
   position: absolute;
@@ -168,6 +197,11 @@ dialog:not([open]) {
   justify-content: space-between;
 }
 
+.line {
+  height: 0.1px;
+  background-color: #0C0C0C;
+}
+
 label {
   font-size: 1.6rem;
   font-family: Arial;
@@ -177,6 +211,7 @@ label {
 
 i {
   font-size: 2.4rem;
+  color: #2f2f2f;
 }
 
 .btn {
@@ -195,7 +230,7 @@ i {
 .small-btn {
   width: 60px;
   height: 60px;
-  border-radius: 1rem;
+  border-radius: 2rem;
   border-color: #0C0C0C;
 }
 
@@ -250,12 +285,12 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #ceff00;
+  background-color: #E3FF73;
   border-radius: 1rem;
 }
 
 .active {
-  border: 0.3rem solid #ceff00;
+  border: 0.3rem solid #E3FF73;
   transition: all 0.1s;
 }
 

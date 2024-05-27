@@ -18,6 +18,40 @@
   <body>
     <main>
       <div class="container">
+
+        <section id="statistics">
+          <div class="statistics__container">
+            <button
+            class="btn large-btn"
+            onclick="newgoal()"
+            id="new-goal-item"
+            type="button"
+          >
+            New goal
+          </button>
+            <div class="statistics__item">
+              <span class="statistics__count" id="number-goals">0</span>
+              <p class="statistics__description">Total Goals</p>
+            </div>
+            <div class="statistics__item">
+              <span class="statistics__count" id="remaining-target">0</span>
+              <p class="statistics__description">Goals In Progress</p>
+            </div>
+            <div class="statistics__item">
+              <span class="statistics__count" id="compleate-goals">0</span>
+              <p class="statistics__description">Goals Completed</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="goal-list">
+          <div class="container__goal hide" id="container-goal">
+
+            <div class="line"></div>
+            <div class="goal__list" id="goal-lists"></div>
+          </div>
+        </section>
+
         <dialog id="dialog">
           <div class="goal__container">
             <h1 class="title">New goal</h1>
@@ -31,6 +65,16 @@
                   placeholder="Name of your target"
                   minlength="1"
                   required
+                />
+              </div>
+
+              <div class="goal__data">
+                <label for="goal__initial">Initial value</label>
+                <input
+                  id="goal__initial"
+                  type="number"
+                  placeholder="Initial value"
+                  minlength="1"
                 />
               </div>
 
@@ -93,25 +137,10 @@
             </form>
 
             <button class="btn large-btn" id="button" form="form" type="submit">
-              Crate goal
+              Create goal
             </button>
           </div>
         </dialog>
-
-        <section id="goal-list">
-          <div class="container__goal hide" id="container-goal">
-            <button
-              class="btn large-btn"
-              onclick="newgoal()"
-              id="new-goal-item"
-              type="button"
-            >
-              New goal
-            </button>
-            <hr>
-            <div class="goal__list" id="goal-lists"></div>
-          </div>
-        </section>
       </div>
     </main>
     <script src="./js/script.js"></script>

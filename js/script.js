@@ -6,11 +6,16 @@ const goalFormStart = document.getElementById('form');
 const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
 const goalNameInput = document.getElementById('goal__name');
 const goalAmountInput = document.getElementById('goal__amount');
+const goalInitialValue = document.getElementById('goal__initial');
 const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
 const goalListContainer = document.getElementById('container-goal');
-const goalList = document.getElementById('goal-lists'); 
+const goalList = document.getElementById('goal-lists');
 const goalAmountInputItem = document.getElementById('amount');
 const dialogWindows = document.getElementById('dialog');
+
+const labelNumberGoals = document.getElementById('number-goals');
+const labelRemainingTarget = document.getElementById('remaining-target');
+const labelCompleateGoals = document.getElementById('compleate-goals');
 
 const withdrawBtn = document.getElementById('withdraw-btn');
 const depositBtn = document.getElementById('deposit-btn');
@@ -19,57 +24,58 @@ const progressBar = document.getElementById('goal-progressbar');
 
 const goalData = [
   {
-    id: '3000-1716649489315',
+    id: '1000-1716649489315',
     name: 'MacBook Air M2',
     amount: '1200',
     currency: 'USD',
     accumulation: 600,
-    percentPointToFinish: 50,
+    percentPointToFinish: 0,
     history: {},
   },
   {
-    id: '3000-1716649489317',
+    id: '2000-1716649489317',
     name: 'iPhone 14 Pro',
     amount: '900',
     currency: 'USD',
     accumulation: 450,
-    percentPointToFinish: 50,
+    percentPointToFinish: 0,
     history: {},
   },
   {
-    id: '3000-1716649489317',
+    id: '3000-1716649482317',
     name: 'Tesla Model X',
     amount: '45000',
     currency: 'USD',
     accumulation: 15000,
-    percentPointToFinish: 50,
+    percentPointToFinish: 0,
     history: {},
   },
   {
-    id: '3000-1716649489315',
-    name: 'MacBook Air M2',
+    id: '4000-1716649389315',
+    name: 'iMac 27',
     amount: '1200',
     currency: 'USD',
     accumulation: 600,
-    percentPointToFinish: 50,
+    percentPointToFinish: 0,
     history: {},
   },
   {
-    id: '3000-1716649489317',
-    name: 'iPhone 14 Pro',
+    id: '5000-1716619489317',
+    name: 'Samsung Galaxy',
     amount: '900',
     currency: 'USD',
     accumulation: 450,
-    percentPointToFinish: 50,
+    percentPointToFinish: 0,
     history: {},
   },
   {
-    id: '3000-1716649489317',
-    name: 'Tesla Model X',
-    amount: '45000',
+    id: '6000-1716649489317',
+    name: 'PlayStatipn 5',
+    amount: '450',
     currency: 'USD',
-    accumulation: 15000,
-    percentPointToFinish: 50,
+    accumulation: 450,
+    percentPointToFinish: 100,
+    compleateStatus: true,
     history: {},
   },
 ];
@@ -117,11 +123,13 @@ const addNewGoal = () => {
     name: goalNameInput.value,
     amount: goalAmountInput.value,
     currency: getActiveItemRadio(),
-    accumulation: 0,
+    accumulation: 0 || +goalInitialValue.value,
     percentPointToFinish: 0,
+    compleateStatus: false,
     history: {},
   };
 
+  percentageToFinish(goalObj);
   goalData.push(goalObj);
   renderListGoal();
   console.log(goalData);
@@ -132,11 +140,11 @@ const addNewGoal = () => {
 const clearInputs = () => {
   goalNameInput.value = '';
   goalAmountInput.value = '';
+  goalInitialValue.value = '';
   removeClassActiveRadio();
 };
 
-goalFormStart.addEventListener('submit', e => {
-  // e.preventDefault();
+goalFormStart.addEventListener('submit', () => {
   addNewGoal();
   clearInputs();
 });
@@ -144,17 +152,25 @@ goalFormStart.addEventListener('submit', e => {
 addClassActiveForRadio();
 
 const renderListGoal = () => {
+  labelNumberGoals.innerText = goalData.length;
   goalList.innerHTML = '';
-  // goalListContainer.innerHTML = `
-  //     <button class="btn large-btn" onclick="newgoal()" id="new-goal-item" type="button">
-  //         New goal
-  //     </button>`;
   goalData.forEach(
-    ({ id, name, amount, currency, accumulation, percentPointToFinish }) => {
+    ({
+      id,
+      name,
+      amount,
+      currency,
+      accumulation,
+      percentPointToFinish,
+      compleateStatus,
+    }) => {
       goalList.innerHTML += `
     <div class="goal__task" id="${id}">
     <h1 class="title">${name}</h1>
-    <div class="goal__accumulate">
+    <div class="goal__status ${!compleateStatus ? 'hide' : 'show'}"">
+      <i class="ri-checkbox-circle-line"></i>
+    </div>
+    <div class="goal__accumulate ${compleateStatus ? 'hide' : 'show'}">
       <button id="withdraw-btn" onclick="withdraw(this)" class="btn small-btn">
         <i class="ri-corner-left-up-line"></i>
       </button>
@@ -222,13 +238,14 @@ const accumulateDeposit = (searchId, idBtn) => {
     }
   });
 
+  /// Get the amount from input target card
   const sum = document
     .getElementById(searchId)
     .getElementsByTagName('input')[0].value;
 
   if (idBtn === 'withdraw-btn') {
     if (totalItem.accumulation < sum) {
-      console.log(`Withdrawals add to your savings limit!`);
+      alert(`Withdrawals add to your savings limit!`);
       return;
     }
     totalItem.accumulation -= +sum;
@@ -236,14 +253,18 @@ const accumulateDeposit = (searchId, idBtn) => {
     totalItem.accumulation += +sum;
   }
 
-  totalItem.percentPointToFinish = (
-    (totalItem.accumulation / totalItem.amount) *
-    100
-  ).toFixed(2);
-
+  checkCompletionStatus(totalItem);
+  percentageToFinish(totalItem);
   renderListGoal();
   console.log(goalData);
 };
+
+function percentageToFinish(goalItem) {
+  goalItem.percentPointToFinish = (
+    (goalItem.accumulation / goalItem.amount) *
+    100
+  ).toFixed(2);
+}
 
 const dialogWindow = buttonEl => {
   const parentDiv = buttonEl.parentElement.parentElement;
@@ -258,6 +279,7 @@ const dialogWindow = buttonEl => {
 };
 
 const removeGoal = goalID => {
+  console.log('Remove item ' + goalID);
   const indexItem = goalData.findIndex(item => item.id === goalID);
   goalData.splice(indexItem, 1);
   console.log(goalData);
@@ -269,15 +291,23 @@ const newgoal = () => {
 };
 
 const deposit = buttonEl => {
-  accumulateDeposit(buttonEl.parentElement.parentElement.id, buttonEl.id);
+  accumulateDeposit(buttonEl.closest('.goal__task').id);
 };
 
 const withdraw = buttonEl => {
-  accumulateDeposit(buttonEl.parentElement.parentElement.id, buttonEl.id);
+  accumulateDeposit(buttonEl.closest('.goal__task').id);
 };
 
 const remove = buttonEl => {
-  removeGoal(buttonEl.parentElement.parentElement.id);
+  removeGoal(buttonEl.closest('.goal__task').id);
+};
+
+/// CHECK GOAL COMPLETION STATUS.
+const checkCompletionStatus = goalItemObj => {
+  if (goalItemObj.accumulation >= goalItemObj.amount) {
+    goalItemObj.compleateStatus = true;
+    console.log('Goal Item Complete 🥳');
+  }
 };
 
 renderListGoal();
