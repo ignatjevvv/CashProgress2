@@ -80,7 +80,7 @@ const goalData = [
   },
 ];
 
-const currentGoal = {};
+let currentGoal = {};
 const currencyList = {
   USD: '$',
   EUR: '€',
@@ -118,6 +118,8 @@ const removeClassActiveRadio = () => {
 const addNewGoal = () => {
   goalListContainer.classList.remove('hide');
 
+  const dataArrIndex = goalData.findIndex(item => item.id === currentGoal.id);
+
   const goalObj = {
     id: `${goalNameInput.value.toLowerCase().split(' ').join('-')}-${+new Date()}`,
     name: goalNameInput.value,
@@ -129,15 +131,23 @@ const addNewGoal = () => {
     history: {},
   };
 
+  if (dataArrIndex === -1) {
+    goalData.push(goalObj);
+  } else {
+    goalData[dataArrIndex] = goalObj;
+  }
+
   percentageToFinish(goalObj);
-  goalData.push(goalObj);
   renderListGoal();
   console.log(goalData);
   console.log(progressBar);
 };
 
 /// Clear input fields from values
-const clearInputs = () => {
+const reset = () => {
+  dialogWindows.querySelector('.title').innerText = 'New goal';
+  btn.innerText = 'Create goal';
+
   goalNameInput.value = '';
   goalAmountInput.value = '';
   goalInitialValue.value = '';
@@ -146,13 +156,13 @@ const clearInputs = () => {
 
 goalFormStart.addEventListener('submit', () => {
   addNewGoal();
-  clearInputs();
+  reset();
 });
 
 addClassActiveForRadio();
 
 const renderListGoal = () => {
-  labelNumberGoals.innerText = goalData.length;
+  updateDashboardGoalsInfo(goalData);
   goalList.innerHTML = '';
   goalData.forEach(
     ({
@@ -207,7 +217,7 @@ const renderListGoal = () => {
       <button class="btn small-btn" id="history">
         <i class="ri-list-view"></i>
       </button>
-      <button class="btn small-btn" id="edit">
+      <button class="btn small-btn" id="edit" onclick="edite(this)">
         <i class="ri-edit-line"></i>
       </button>
     </div>
@@ -229,6 +239,15 @@ const renderListGoal = () => {
   `;
     },
   );
+};
+
+const updateDashboardGoalsInfo = goalData => {
+  const totalNumberGoals = goalData.length;
+  const compleateCount = goalData.filter(item => item.compleateStatus).length;
+
+  labelNumberGoals.innerText = totalNumberGoals;
+  labelCompleateGoals.innerHTML = compleateCount;
+  labelRemainingTarget.innerHTML = totalNumberGoals - compleateCount;
 };
 
 const accumulateDeposit = (searchId, idBtn) => {
@@ -287,6 +306,7 @@ const removeGoal = goalID => {
 };
 
 const newgoal = () => {
+  reset();
   dialogWindows.showModal();
 };
 
@@ -302,12 +322,38 @@ const remove = buttonEl => {
   removeGoal(buttonEl.closest('.goal__task').id);
 };
 
+const edite = buttonEl => {
+  editeGoal(buttonEl.closest('.goal__task').id);
+};
+
 /// CHECK GOAL COMPLETION STATUS.
 const checkCompletionStatus = goalItemObj => {
   if (goalItemObj.accumulation >= goalItemObj.amount) {
     goalItemObj.compleateStatus = true;
     console.log('Goal Item Complete 🥳');
   }
+};
+
+/// EDITE GOAL.
+const editeGoal = goalID => {
+  const dataArrIndex = goalData.findIndex(item => item.id === goalID);
+  currentGoal = goalData[dataArrIndex];
+  goalNameInput.value = currentGoal.name;
+  goalAmountInput.value = currentGoal.amount;
+  goalInitialValue.value = currentGoal.accumulation;
+
+  console.log(currentGoal);
+
+  radiosCurrencyBtn.forEach(item => {
+    if (item.value === currentGoal.currency) {
+      item.parentNode.classList.add('active');
+    }
+    console.log(item.value);
+  });
+
+  dialogWindows.querySelector('.title').innerText = 'Edit goal';
+  btn.innerText = 'Save goal';
+  dialogWindows.showModal();
 };
 
 renderListGoal();
