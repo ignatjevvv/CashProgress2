@@ -18,17 +18,16 @@
   <body>
     <main>
       <div class="container">
-
         <section id="statistics">
           <div class="statistics__container">
             <button
-            class="btn large-btn"
-            onclick="newgoal()"
-            id="new-goal-item"
-            type="button"
-          >
-            New goal
-          </button>
+              class="btn large-btn"
+              onclick="newgoal()"
+              id="new-goal-item"
+              type="button"
+            >
+              New goal
+            </button>
             <div class="statistics__item">
               <span class="statistics__count" id="number-goals">0</span>
               <p class="statistics__description">Total Goals</p>
@@ -46,7 +45,6 @@
 
         <section id="goal-list">
           <div class="container__goal hide" id="container-goal">
-
             <div class="line"></div>
             <div class="goal__list" id="goal-lists"></div>
           </div>
@@ -136,9 +134,23 @@
               </div>
             </form>
 
-            <button class="btn large-btn" id="button" form="form" type="submit">
-              Create goal
-            </button>
+            <div class="button__menu">
+              <button
+                class="btn small-btn close"
+                id="close-button"
+              >
+                Discard
+              </button>
+
+              <button
+                class="btn large-btn"
+                id="button"
+                form="form"
+                type="submit"
+              >
+                Create goal
+              </button>
+            </div>
           </div>
         </dialog>
       </div>

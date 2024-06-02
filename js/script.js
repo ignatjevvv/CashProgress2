@@ -1,6 +1,7 @@
 'use strict';
 
 const btn = document.getElementById('button');
+const discardBtn = document.getElementById('close-button');
 const windowStart = document.querySelector('.goal__container');
 const goalFormStart = document.getElementById('form');
 const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
@@ -22,63 +23,7 @@ const depositBtn = document.getElementById('deposit-btn');
 
 const progressBar = document.getElementById('goal-progressbar');
 
-const goalData = [
-  {
-    id: '1000-1716649489315',
-    name: 'MacBook Air M2',
-    amount: '1200',
-    currency: 'USD',
-    accumulation: 600,
-    percentPointToFinish: 0,
-    history: {},
-  },
-  {
-    id: '2000-1716649489317',
-    name: 'iPhone 14 Pro',
-    amount: '900',
-    currency: 'USD',
-    accumulation: 450,
-    percentPointToFinish: 0,
-    history: {},
-  },
-  {
-    id: '3000-1716649482317',
-    name: 'Tesla Model X',
-    amount: '45000',
-    currency: 'USD',
-    accumulation: 15000,
-    percentPointToFinish: 0,
-    history: {},
-  },
-  {
-    id: '4000-1716649389315',
-    name: 'iMac 27',
-    amount: '1200',
-    currency: 'USD',
-    accumulation: 600,
-    percentPointToFinish: 0,
-    history: {},
-  },
-  {
-    id: '5000-1716619489317',
-    name: 'Samsung Galaxy',
-    amount: '900',
-    currency: 'USD',
-    accumulation: 450,
-    percentPointToFinish: 0,
-    history: {},
-  },
-  {
-    id: '6000-1716649489317',
-    name: 'PlayStatipn 5',
-    amount: '450',
-    currency: 'USD',
-    accumulation: 450,
-    percentPointToFinish: 100,
-    compleateStatus: true,
-    history: {},
-  },
-];
+const goalData = JSON.parse(localStorage.getItem('data')) || [];
 
 let currentGoal = {};
 const currencyList = {
@@ -126,7 +71,6 @@ const addNewGoal = () => {
     amount: goalAmountInput.value,
     currency: getActiveItemRadio(),
     accumulation: 0 || +goalInitialValue.value,
-    percentPointToFinish: 0,
     compleateStatus: false,
     history: {},
   };
@@ -137,6 +81,7 @@ const addNewGoal = () => {
     goalData[dataArrIndex] = goalObj;
   }
 
+  saveDataLocalStorage();
   percentageToFinish(goalObj);
   renderListGoal();
   console.log(goalData);
@@ -152,8 +97,10 @@ const reset = () => {
   goalAmountInput.value = '';
   goalInitialValue.value = '';
   removeClassActiveRadio();
+  currentGoal = {};
 };
 
+/// CREATE NEW GOAL WHEN CLICK BUTTON
 goalFormStart.addEventListener('submit', () => {
   addNewGoal();
   reset();
@@ -272,6 +219,7 @@ const accumulateDeposit = (searchId, idBtn) => {
     totalItem.accumulation += +sum;
   }
 
+  saveDataLocalStorage();
   checkCompletionStatus(totalItem);
   percentageToFinish(totalItem);
   renderListGoal();
@@ -283,6 +231,7 @@ function percentageToFinish(goalItem) {
     (goalItem.accumulation / goalItem.amount) *
     100
   ).toFixed(2);
+  saveDataLocalStorage();
 }
 
 const dialogWindow = buttonEl => {
@@ -302,6 +251,7 @@ const removeGoal = goalID => {
   const indexItem = goalData.findIndex(item => item.id === goalID);
   goalData.splice(indexItem, 1);
   console.log(goalData);
+  saveDataLocalStorage();
   renderListGoal();
 };
 
@@ -310,12 +260,21 @@ const newgoal = () => {
   dialogWindows.showModal();
 };
 
+discardBtn.addEventListener('click', () => {
+  reset();
+  dialogWindows.close();
+});
+
 const deposit = buttonEl => {
   accumulateDeposit(buttonEl.closest('.goal__task').id);
 };
 
 const withdraw = buttonEl => {
   accumulateDeposit(buttonEl.closest('.goal__task').id);
+};
+
+const history = buttonEl => {
+  showHistory(buttonEl.closest('.goal__task').id);
 };
 
 const remove = buttonEl => {
@@ -348,7 +307,6 @@ const editeGoal = goalID => {
     if (item.value === currentGoal.currency) {
       item.parentNode.classList.add('active');
     }
-    console.log(item.value);
   });
 
   dialogWindows.querySelector('.title').innerText = 'Edit goal';
@@ -363,3 +321,9 @@ if (!goalData.length) {
   renderListGoal();
   goalListContainer.classList.toggle('hide');
 }
+
+/// Save data in local storage.
+
+const saveDataLocalStorage = () => {
+  localStorage.setItem('data', JSON.stringify(goalData));
+};

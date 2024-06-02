@@ -1,6 +1,12 @@
 @import "https://unpkg.com/open-props";
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+
+:root {
+    --border-radius-color: #3a3939;
+    --color-icon-button: #3a3939;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -97,9 +103,9 @@ dialog:not([open]) {
         border-radius: 1.5rem;
         border: 1px solid #0C0C0C;
 
-        .btn {
-            margin-left: auto;
-        }
+        // .btn {
+        //     margin-left: auto;
+        // }
     }
 
     &__status {
@@ -164,7 +170,7 @@ dialog:not([open]) {
         height: 400px;
         border-radius: 1.5rem;
         padding: 4rem;
-        border: 1px solid #0C0C0C;
+        border: 1px solid var(--border-radius-color);
         overflow: auto;
     }
 
@@ -189,7 +195,7 @@ dialog:not([open]) {
         width: 100%;
         height: 1.5rem;
         border-radius: 1rem;
-        border: 1px solid #0C0C0C;
+        border: 1px solid var(--border-radius-color);
     }
 
     &__wrapper {
@@ -240,12 +246,17 @@ label {
 
 i {
     font-size: 2.4rem;
-    color: #2f2f2f;
+    color: var(--color-icon-button);
 }
 
 /// BUTTON
+.button__menu {
+    display: flex;
+    justify-content: space-between;
+}
+
 .btn {
-    width: 160px;
+    width: 145px;
     height: 60px;
     border: .1rem solid rgba(255, 255, 255, 0.600);
     background-color: black;
@@ -261,7 +272,7 @@ i {
     width: 60px;
     height: 60px;
     border-radius: 2rem;
-    border-color: #0C0C0C;
+    border-color: var(--border-radius-color);
 }
 
 .btn:hover {
@@ -270,13 +281,18 @@ i {
     transition: all 0.3s;
 }
 
+.close {
+    // background-color: orangered;
+    width: 145px;
+    border-radius: 3rem;
+}
 
 /// INPUT 
 input {
     width: auto;
     height: 60px;
     background: none;
-    border: 1px solid #0C0C0C;
+    border: 1px solid var(--border-radius-color);
     border-radius: 1rem;
     color: white;
     padding: 0 1.6rem;
