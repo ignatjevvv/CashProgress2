@@ -92,7 +92,7 @@ const addNewGoal = () => {
 
 /// Clear input fields from values
 const reset = () => {
-  dialogWindows.querySelector('.title').innerText = 'New goal';
+  dialogWindows.querySelector('.dialog__title').innerText = 'New goal';
   btn.innerText = 'Create goal';
   goalFormStart.classList.remove('hide');
 
@@ -129,7 +129,7 @@ const renderListGoal = () => {
     }) => {
       goalList.innerHTML += `
     <div class="goal__task" id="${id}">
-    <h1 class="title">${name}</h1>
+    <h1 class="goal__title">${name}</h1>
     <div class="goal__status ${!compleateStatus ? 'hide' : 'show'}"">
       <i class="ri-checkbox-circle-line"></i>
     </div>
@@ -324,7 +324,7 @@ const editeGoal = goalID => {
     }
   });
 
-  dialogWindows.querySelector('.title').innerText = 'Edit goal';
+  dialogWindows.querySelector('.dialog__title').innerText = 'Edit goal';
   btn.innerText = 'Save goal';
   dialogWindows.showModal();
 };
@@ -344,7 +344,7 @@ const showHistory = goalID => {
 
   goalFormStart.classList.add('hide');
   historyList.classList.remove('hide');
-  dialogWindows.querySelector('.title').innerText = 'History';
+  dialogWindows.querySelector('.dialog__title').innerText = 'History';
   historyList.innerHTML = '';
 
   currentGoal.history.forEach(item => {

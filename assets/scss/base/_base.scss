@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #000000;
+}
+
+i {
+    font-size: 2.4rem;
+    color: var(--color-icon-button);
+}
+
+label {
+    font-size: 1.6rem;
+    font-family: Arial;
+    font-weight: 300;
+    color: #CCCCCC;
+}
+
+dialog {
+    margin: auto;
+    background-color: initial;
+    border: none;
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    inset: 0px;
+    background: rgb(0, 0, 0, 80%);
+    backdrop-filter: blur(2px);
+}
+
+dialog[open] {
+    animation: var(--animation-slide-in-up) forwards;
+}
+
+dialog:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+}

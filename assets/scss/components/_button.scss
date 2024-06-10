@@ -1,0 +1,37 @@
+/// BUTTON
+.button__menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 145px;
+    height: 60px;
+    border: .1rem solid rgba(255, 255, 255, 0.600);
+    background-color: black;
+    font-family: Arial;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+
+.small-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 2rem;
+    border-color: var(--border-radius-color);
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.3s;
+}
+
+.close {
+    // background-color: orangered;
+    width: 145px;
+    border-radius: 3rem;
+}

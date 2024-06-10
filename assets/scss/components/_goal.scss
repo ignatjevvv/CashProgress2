@@ -1,0 +1,107 @@
+.goal {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    &__title {
+        font-size: 3.2rem;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: white;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    &__task {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: space-between;
+        background: black;
+        width: 400px;
+        height: 400px;
+        border-radius: 1.5rem;
+        padding: 4rem;
+        border: 2px solid var(--border-radius-color);
+        overflow: auto;
+    }
+
+    &__accumulate {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__options {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__amount {
+        width: 170px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    &__progressbar {
+        width: 100%;
+        height: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border-radius-color);
+    }
+
+    &__dialog {
+        position: absolute;
+        background: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding: 3rem;
+        /* transform: translate(-50%, -50%); */
+        top: 0;
+        left: 0;
+
+        &-message {
+            font-size: 4rem;
+        }
+
+        &-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__wrapper {
+        margin-top: 1rem;
+        display: flex;
+        color: #CCCCCC;
+        justify-content: space-between;
+        font-size: 2rem;
+        font-family: "Manrope", sans-serif;
+    }
+
+    &__status {
+        margin: 0 auto;
+
+        i {
+            font-size: 6rem;
+            color: #E3FF73;
+        }
+    }
+}
+
+.active {
+    border: .3rem solid #E3FF73;
+    transition: all .1s;
+}
+
+.hide {
+    display: none;
+}

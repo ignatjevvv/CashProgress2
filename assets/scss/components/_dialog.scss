@@ -1,0 +1,100 @@
+
+.dialog {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        background-color: black;
+        width: 400px;
+        min-height: 700px;
+        padding: 4rem;
+        border-radius: 1.5rem;
+        border: 1px solid #0C0C0C;
+    }
+
+    &__title {
+        font-size: 3.2rem;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: white;
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__currency {
+        display: flex;
+        justify-content: space-between;
+
+        &-option {
+            display: flex;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #0C0C0C;
+            border-radius: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                background-color: white;
+                color: #0C0C0C;
+                transition: all .3s;
+            }
+        }
+
+        &-label {
+            font-size: 2rem;
+        }
+    }
+
+    /// HISTORY LIST
+    &__history {
+        font-family: "Manrope", sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        height: 450px;
+        overflow: scroll;
+        // justify-content: center;
+        border: 1px solid #0d0d0d;
+        border-radius: 2rem;
+        padding: 2rem;
+
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &-amount {
+            font-size: 3.2rem;
+        }
+
+        &-date {
+            gap: .3rem;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-icon {
+            i {
+                font-size: 3.5rem;
+            }
+
+        }
+    }
+}
+
+

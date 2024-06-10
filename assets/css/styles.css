@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "https://unpkg.com/open-props";
+/*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-/* FOR TEST */
 :root {
   --border-radius-color: #3a3939;
   --color-icon-button: #3a3939;
@@ -21,11 +21,16 @@ body {
   background-color: #000000;
 }
 
-.container {
-  width: 1280px;
-  height: 100vh;
-  justify-content: center;
-  margin: 0 auto;
+i {
+  font-size: 2.4rem;
+  color: var(--color-icon-button);
+}
+
+label {
+  font-size: 1.6rem;
+  font-family: Arial;
+  font-weight: 300;
+  color: #CCCCCC;
 }
 
 dialog {
@@ -50,11 +55,126 @@ dialog:not([open]) {
   opacity: 0;
 }
 
-.title {
+.container {
+  width: 1280px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.dialog__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+  width: 400px;
+  min-height: 700px;
+  padding: 4rem;
+  border-radius: 1.5rem;
+  border: 1px solid #0C0C0C;
+}
+.dialog__title {
   font-size: 3.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: white;
+}
+.dialog__data {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.dialog__currency {
+  display: flex;
+  justify-content: space-between;
+}
+.dialog__currency-option {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #0C0C0C;
+  border-radius: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.dialog__currency-option:hover {
+  background-color: white;
+  color: #0C0C0C;
+  transition: all 0.3s;
+}
+.dialog__currency-label {
+  font-size: 2rem;
+}
+.dialog__history {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 450px;
+  overflow: scroll;
+  border: 1px solid #0d0d0d;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+.dialog__history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dialog__history-amount {
+  font-size: 3.2rem;
+}
+.dialog__history-date {
+  gap: 0.3rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.dialog__history-icon i {
+  font-size: 3.5rem;
+}
+
+.button__menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 145px;
+  height: 60px;
+  border: 0.1rem solid rgba(255, 255, 255, 0.6);
+  background-color: black;
+  font-family: Arial;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.small-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 2rem;
+  border-color: var(--border-radius-color);
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s;
+}
+
+.close {
+  width: 145px;
+  border-radius: 3rem;
 }
 
 .statistic__container {
@@ -78,10 +198,32 @@ dialog:not([open]) {
   font-family: "Manrope", sans-serif;
 }
 
+progress {
+  width: 300px;
+  height: 25px;
+  border: 2px solid gray;
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgb(0, 0, 0);
+  border-radius: 1rem;
+}
+
+progress::-webkit-progress-value {
+  background-color: #E3FF73;
+  border-radius: 1rem;
+}
+
 .goal__container {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+.goal__title {
+  font-size: 3.2rem;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: white;
 }
 .goal__list {
   display: flex;
@@ -156,130 +298,13 @@ dialog:not([open]) {
   color: #E3FF73;
 }
 
-.dialog__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: white;
-  background-color: black;
-  width: 400px;
-  min-height: 700px;
-  padding: 4rem;
-  border-radius: 1.5rem;
-  border: 1px solid #0C0C0C;
-}
-.dialog__data {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-.dialog__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-.dialog__currency {
-  display: flex;
-  justify-content: space-between;
-}
-.dialog__currency-option {
-  display: flex;
-  width: 60px;
-  height: 60px;
-  border: 1px solid #0C0C0C;
-  border-radius: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.dialog__currency-option:hover {
-  background-color: white;
-  color: #0C0C0C;
-  transition: all 0.3s;
-}
-.dialog__currency-label {
-  font-size: 2rem;
-}
-.dialog__history {
-  font-family: "Manrope", sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: 450px;
-  overflow: scroll;
-  border: 1px solid #0d0d0d;
-  border-radius: 2rem;
-  padding: 2rem;
-}
-.dialog__history-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dialog__history-amount {
-  font-size: 3.2rem;
-}
-.dialog__history-date {
-  gap: 0.3rem;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-.dialog__history-icon i {
-  font-size: 3.5rem;
+.active {
+  border: 0.3rem solid #E3FF73;
+  transition: all 0.1s;
 }
 
-.line {
-  height: 0.1px;
-  background-color: #0C0C0C;
-}
-
-label {
-  font-size: 1.6rem;
-  font-family: Arial;
-  font-weight: 300;
-  color: #CCCCCC;
-}
-
-i {
-  font-size: 2.4rem;
-  color: var(--color-icon-button);
-}
-
-.button__menu {
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn {
-  width: 145px;
-  height: 60px;
-  border: 0.1rem solid rgba(255, 255, 255, 0.6);
-  background-color: black;
-  font-family: Arial;
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 400;
-  border-radius: 3rem;
-  cursor: pointer;
-}
-
-.small-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 2rem;
-  border-color: var(--border-radius-color);
-}
-
-.btn:hover {
-  background-color: white;
-  color: black;
-  transition: all 0.3s;
-}
-
-.close {
-  width: 145px;
-  border-radius: 3rem;
+.hide {
+  display: none;
 }
 
 input {
@@ -315,27 +340,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-progress {
-  width: 300px;
-  height: 25px;
-  border: 2px solid gray;
-}
-
-progress::-webkit-progress-bar {
-  background-color: rgb(0, 0, 0);
-  border-radius: 1rem;
-}
-
-progress::-webkit-progress-value {
-  background-color: #E3FF73;
-  border-radius: 1rem;
-}
-
-.active {
-  border: 0.3rem solid #E3FF73;
-  transition: all 0.1s;
-}
-
-.hide {
-  display: none;
+.line {
+  height: 0.1px;
+  background-color: #0C0C0C;
 }
