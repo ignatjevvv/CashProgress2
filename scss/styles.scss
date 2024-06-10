@@ -27,13 +27,6 @@ body {
     justify-content: center;
     // align-items: center;
     margin: 0 auto;
-
-    &__goal {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-    }
-
 }
 
 dialog {
@@ -65,7 +58,7 @@ dialog:not([open]) {
     color: white;
 }
 
-.statistics {
+.statistic {
     &__container {
         font-family: Arial, Helvetica, sans-serif;
         width: 100%;
@@ -90,71 +83,15 @@ dialog:not([open]) {
     }
 }
 
+
+
 .goal {
     &__container {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        color: white;
-        background-color: black;
-        width: 400px;
-        min-height: 700px;
-        padding: 4rem;
-        border-radius: 1.5rem;
-        border: 1px solid #0C0C0C;
-
-        // .btn {
-        //     margin-left: auto;
-        // }
+        gap: 3rem;
     }
-
-    &__status {
-        margin: 0 auto;
-
-        i {
-            font-size: 6rem;
-            color: #E3FF73;
-        }
-    }
-
-    &__data {
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-    }
-
-    &__currency {
-        display: flex;
-        justify-content: space-between;
-
-        &-option {
-            display: flex;
-            width: 60px;
-            height: 60px;
-            border: 1px solid #0C0C0C;
-            border-radius: 1.5rem;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            &:hover {
-                background-color: white;
-                color: #0C0C0C;
-                transition: all .3s;
-            }
-        }
-
-        &-label {
-            font-size: 2rem;
-        }
-    }
-
+    
     &__list {
         display: flex;
         flex-wrap: wrap;
@@ -199,15 +136,6 @@ dialog:not([open]) {
         border: 1px solid var(--border-radius-color);
     }
 
-    &__wrapper {
-        margin-top: 1rem;
-        display: flex;
-        color: #CCCCCC;
-        justify-content: space-between;
-        font-size: 2rem;
-        font-family: "Manrope", sans-serif;
-    }
-
     &__dialog {
         position: absolute;
         background: whitesmoke;
@@ -231,6 +159,77 @@ dialog:not([open]) {
         }
     }
 
+    &__wrapper {
+        margin-top: 1rem;
+        display: flex;
+        color: #CCCCCC;
+        justify-content: space-between;
+        font-size: 2rem;
+        font-family: "Manrope", sans-serif;
+    }
+
+    &__status {
+        margin: 0 auto;
+
+        i {
+            font-size: 6rem;
+            color: #E3FF73;
+        }
+    }
+}
+
+.dialog {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        background-color: black;
+        width: 400px;
+        min-height: 700px;
+        padding: 4rem;
+        border-radius: 1.5rem;
+        border: 1px solid #0C0C0C;
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    &__currency {
+        display: flex;
+        justify-content: space-between;
+
+        &-option {
+            display: flex;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #0C0C0C;
+            border-radius: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                background-color: white;
+                color: #0C0C0C;
+                transition: all .3s;
+            }
+        }
+
+        &-label {
+            font-size: 2rem;
+        }
+    }
+
     /// HISTORY LIST
     &__history {
         font-family: "Manrope", sans-serif;
@@ -243,6 +242,7 @@ dialog:not([open]) {
         border: 1px solid #0d0d0d;
         border-radius: 2rem;
         padding: 2rem;
+
         &-item {
             display: flex;
             justify-content: space-between;

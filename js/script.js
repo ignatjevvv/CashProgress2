@@ -2,14 +2,14 @@
 
 const btn = document.getElementById('button');
 const discardBtn = document.getElementById('close-button');
-const windowStart = document.querySelector('.goal__container');
+const windowStart = document.querySelector('.dialog__container');
 const goalFormStart = document.getElementById('form');
 const radiosCurrencyBtn = document.querySelectorAll('input[type="radio"]');
-const goalNameInput = document.getElementById('goal__name');
-const goalAmountInput = document.getElementById('goal__amount');
-const goalInitialValue = document.getElementById('goal__initial');
-const currencyTypeRadio = document.querySelectorAll('.goal__currency-option');
-const goalListContainer = document.getElementById('container-goal');
+const goalNameInput = document.getElementById('dialog-name');
+const goalAmountInput = document.getElementById('dialog-amount');
+const goalInitialValue = document.getElementById('dialog-initial');
+const currencyTypeRadio = document.querySelectorAll('.dialog__currency-option');
+const goalListContainer = document.getElementById('goal-container');
 const goalList = document.getElementById('goal-lists');
 const goalAmountInputItem = document.getElementById('amount');
 const dialogWindows = document.getElementById('dialog');
@@ -17,7 +17,7 @@ const historyList = document.getElementById('history-list');
 
 const labelNumberGoals = document.getElementById('number-goals');
 const labelRemainingTarget = document.getElementById('remaining-target');
-const labelCompleateGoals = document.getElementById('compleate-goals');
+const labelCompleateGoals = document.getElementById('complete-goals');
 
 const withdrawBtn = document.getElementById('withdraw-btn');
 const depositBtn = document.getElementById('deposit-btn');
@@ -349,16 +349,16 @@ const showHistory = goalID => {
 
   currentGoal.history.forEach(item => {
     historyList.innerHTML += `
-    <div class="goal__history-item">
-      <div class="goal__history-date">
-        <span class="goal__history-month">${item.date.split(',')[0]}</span>
-        <span class="goal__history-time">${item.date.split(',')[1]}</span>
+    <div class="dialog__history-item">
+      <div class="dialog__history-date">
+        <span class="dialog__history-month">${item.date.split(',')[0]}</span>
+        <span class="dialog__history-time">${item.date.split(',')[1]}</span>
       </div>
-      <div class="goal__history-amount">
-        <span class="goal__history-month">${item.amount}</span>
+      <div class="dialog__history-amount">
+        <span class="dialog__history-month">${item.amount}</span>
       </div>
-      <div class="goal__history-operation">
-        <span class="goal__history-icon">
+      <div class="dialog__history-operation">
+        <span class="dialog__history-icon">
           <i class="ri-corner-right-down-line"></i>
         </span>
       </div>
