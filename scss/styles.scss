@@ -110,6 +110,7 @@ dialog:not([open]) {
 
     &__status {
         margin: 0 auto;
+
         i {
             font-size: 6rem;
             color: #E3FF73;
@@ -170,7 +171,7 @@ dialog:not([open]) {
         height: 400px;
         border-radius: 1.5rem;
         padding: 4rem;
-        border: 1px solid var(--border-radius-color);
+        border: 2px solid var(--border-radius-color);
         overflow: auto;
     }
 
@@ -227,6 +228,43 @@ dialog:not([open]) {
         &-buttons {
             display: flex;
             justify-content: space-between;
+        }
+    }
+
+    /// HISTORY LIST
+    &__history {
+        font-family: "Manrope", sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        height: 450px;
+        overflow: scroll;
+        // justify-content: center;
+        border: 1px solid #0d0d0d;
+        border-radius: 2rem;
+        padding: 2rem;
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &-amount {
+            font-size: 3.2rem;
+        }
+
+        &-date {
+            gap: .3rem;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-icon {
+            i {
+                font-size: 3.5rem;
+            }
+
         }
     }
 

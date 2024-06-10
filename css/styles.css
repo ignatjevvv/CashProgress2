@@ -148,7 +148,7 @@ dialog:not([open]) {
   height: 400px;
   border-radius: 1.5rem;
   padding: 4rem;
-  border: 1px solid var(--border-radius-color);
+  border: 2px solid var(--border-radius-color);
   overflow: auto;
 }
 .goal__accumulate {
@@ -197,6 +197,34 @@ dialog:not([open]) {
 .goal__dialog-buttons {
   display: flex;
   justify-content: space-between;
+}
+.goal__history {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 450px;
+  overflow: scroll;
+  border: 1px solid #0d0d0d;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+.goal__history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goal__history-amount {
+  font-size: 3.2rem;
+}
+.goal__history-date {
+  gap: 0.3rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.goal__history-icon i {
+  font-size: 3.5rem;
 }
 
 .line {

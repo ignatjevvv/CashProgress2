@@ -13,6 +13,7 @@ const goalListContainer = document.getElementById('container-goal');
 const goalList = document.getElementById('goal-lists');
 const goalAmountInputItem = document.getElementById('amount');
 const dialogWindows = document.getElementById('dialog');
+const historyList = document.getElementById('history-list');
 
 const labelNumberGoals = document.getElementById('number-goals');
 const labelRemainingTarget = document.getElementById('remaining-target');
@@ -64,6 +65,7 @@ const addNewGoal = () => {
   goalListContainer.classList.remove('hide');
 
   const dataArrIndex = goalData.findIndex(item => item.id === currentGoal.id);
+  let historyClone = JSON.parse(JSON.stringify(currentGoal.history || []));
 
   const goalObj = {
     id: `${goalNameInput.value.toLowerCase().split(' ').join('-')}-${+new Date()}`,
@@ -72,11 +74,11 @@ const addNewGoal = () => {
     currency: getActiveItemRadio(),
     accumulation: 0 || +goalInitialValue.value,
     compleateStatus: false,
-    history: {},
+    history: historyClone,
   };
 
   if (dataArrIndex === -1) {
-    goalData.push(goalObj);
+    goalData.unshift(goalObj);
   } else {
     goalData[dataArrIndex] = goalObj;
   }
@@ -92,12 +94,16 @@ const addNewGoal = () => {
 const reset = () => {
   dialogWindows.querySelector('.title').innerText = 'New goal';
   btn.innerText = 'Create goal';
+  goalFormStart.classList.remove('hide');
 
   goalNameInput.value = '';
   goalAmountInput.value = '';
   goalInitialValue.value = '';
   removeClassActiveRadio();
   currentGoal = {};
+
+  historyList.innerHTML = '';
+  historyList.classList.add('hide');
 };
 
 /// CREATE NEW GOAL WHEN CLICK BUTTON
@@ -161,7 +167,7 @@ const renderListGoal = () => {
       <button class="btn small-btn" id="remove" onclick="dialogWindow(this)">
         <i class="ri-delete-bin-line"></i>
       </button>
-      <button class="btn small-btn" id="history">
+      <button class="btn small-btn" id="history" onclick="history(this)">
         <i class="ri-list-view"></i>
       </button>
       <button class="btn small-btn" id="edit" onclick="edite(this)">
@@ -205,21 +211,28 @@ const accumulateDeposit = (searchId, idBtn) => {
   });
 
   /// Get the amount from input target card
+  let typeOperation = '+';
   const sum = document
     .getElementById(searchId)
     .getElementsByTagName('input')[0].value;
+
+  if (+sum === 0) {
+    return;
+  }
 
   if (idBtn === 'withdraw-btn') {
     if (totalItem.accumulation < sum) {
       alert(`Withdrawals add to your savings limit!`);
       return;
     }
+    typeOperation = '-';
     totalItem.accumulation -= +sum;
   } else {
     totalItem.accumulation += +sum;
   }
 
   saveDataLocalStorage();
+  recordTransactionHistory(sum, totalItem, typeOperation);
   checkCompletionStatus(totalItem);
   percentageToFinish(totalItem);
   renderListGoal();
@@ -270,7 +283,7 @@ const deposit = buttonEl => {
 };
 
 const withdraw = buttonEl => {
-  accumulateDeposit(buttonEl.closest('.goal__task').id);
+  accumulateDeposit(buttonEl.closest('.goal__task').id, buttonEl.id);
 };
 
 const history = buttonEl => {
@@ -295,12 +308,14 @@ const checkCompletionStatus = goalItemObj => {
 
 /// EDITE GOAL.
 const editeGoal = goalID => {
+  reset();
   const dataArrIndex = goalData.findIndex(item => item.id === goalID);
   currentGoal = goalData[dataArrIndex];
   goalNameInput.value = currentGoal.name;
   goalAmountInput.value = currentGoal.amount;
   goalInitialValue.value = currentGoal.accumulation;
 
+  console.log('+++');
   console.log(currentGoal);
 
   radiosCurrencyBtn.forEach(item => {
@@ -310,6 +325,47 @@ const editeGoal = goalID => {
   });
 
   dialogWindows.querySelector('.title').innerText = 'Edit goal';
+  btn.innerText = 'Save goal';
+  dialogWindows.showModal();
+};
+
+const recordTransactionHistory = (sum, totalItem, typeOperation) => {
+  totalItem.history.push({
+    amount: sum,
+    date: new Date().toLocaleString(),
+    operation: typeOperation,
+  });
+};
+
+/// SHOW HISTORY LIST
+const showHistory = goalID => {
+  const dataArrIndex = goalData.findIndex(item => item.id === goalID);
+  currentGoal = goalData[dataArrIndex];
+
+  goalFormStart.classList.add('hide');
+  historyList.classList.remove('hide');
+  dialogWindows.querySelector('.title').innerText = 'History';
+  historyList.innerHTML = '';
+
+  currentGoal.history.forEach(item => {
+    historyList.innerHTML += `
+    <div class="goal__history-item">
+      <div class="goal__history-date">
+        <span class="goal__history-month">${item.date.split(',')[0]}</span>
+        <span class="goal__history-time">${item.date.split(',')[1]}</span>
+      </div>
+      <div class="goal__history-amount">
+        <span class="goal__history-month">${item.amount}</span>
+      </div>
+      <div class="goal__history-operation">
+        <span class="goal__history-icon">
+          <i class="ri-corner-right-down-line"></i>
+        </span>
+      </div>
+    </div>
+  `;
+  });
+
   btn.innerText = 'Save goal';
   dialogWindows.showModal();
 };

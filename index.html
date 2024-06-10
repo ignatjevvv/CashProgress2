@@ -53,6 +53,7 @@
         <dialog id="dialog">
           <div class="goal__container">
             <h1 class="title">New goal</h1>
+            <div class="goal__history hide" id="history-list"></div>
 
             <form class="goal__form" id="form" method="dialog">
               <div class="goal__data">
@@ -135,10 +136,7 @@
             </form>
 
             <div class="button__menu">
-              <button
-                class="btn small-btn close"
-                id="close-button"
-              >
+              <button class="btn small-btn close" id="close-button">
                 Discard
               </button>
 
