@@ -80,6 +80,19 @@ const showDropdownMenu = (dropdownClass, button) => {
       }
     });
   });
+
+  closeDropdownMenu();
+};
+
+const closeDropdownMenu = () => {
+  const dropdownItems = document.querySelectorAll('.dropdown__name');
+  console.log(dropdownItems);
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const dropdown = item.closest('.dropdown');
+      dropdown.classList.toggle('show-dropdown');
+    });
+  });
 };
 
 /// Get value from each item and add it in data array
@@ -279,6 +292,7 @@ const renderListGoal = () => {
   `;
     },
   );
+
   showDropdownMenu('dropdown', '.dropdown__button');
 };
 
