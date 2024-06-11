@@ -60,6 +60,28 @@ const removeClassActiveRadio = () => {
   });
 };
 
+/// SHOW DROPDOWN MENU
+
+const showDropdownMenu = (dropdownClass, button) => {
+  const dropdownButtons = document.querySelectorAll(button);
+
+  if (dropdownButtons.length === 0) {
+    console.warn('No dropdown buttons found');
+    return;
+  }
+
+  dropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const dropdown = button.closest(`.${dropdownClass}`);
+      if (dropdown) {
+        dropdown.classList.toggle('show-dropdown');
+      } else {
+        console.warn('No dropdown container found');
+      }
+    });
+  });
+};
+
 /// Get value from each item and add it in data array
 const addNewGoal = () => {
   goalListContainer.classList.remove('hide');
@@ -128,70 +150,136 @@ const renderListGoal = () => {
       compleateStatus,
     }) => {
       goalList.innerHTML += `
-    <div class="goal__task" id="${id}">
-    <h1 class="goal__title">${name}</h1>
-    <div class="goal__status ${!compleateStatus ? 'hide' : 'show'}"">
-      <i class="ri-checkbox-circle-line"></i>
-    </div>
-    <div class="goal__accumulate ${compleateStatus ? 'hide' : 'show'}">
-      <button id="withdraw-btn" onclick="withdraw(this)" class="btn small-btn">
-        <i class="ri-corner-left-up-line"></i>
-      </button>
-      <input
-        class="goal__amount"
-        type="number"
-        id="amount"
-        placeholder="0"
-        value="0"
-      />
-      <button id="deposit-btn" onclick="deposit(this)" class="btn small-btn">
-        <i class="ri-corner-right-down-line"></i>
-      </button>
-    </div>
-
-    <div class="goal__progress">
-      <progress
-        class="goal__progressbar"
-        id="goal-progressbar"
-        max="100"
-        value="${percentPointToFinish}"
-      ></progress>
-
-      <div class="goal__wrapper">
-        <span id="goal-current-span">${accumulation}${currencyList[currency]}</span>
-        <span id="goal-finish-span">${amount}${currencyList[currency]}</span>
-      </div>
-    </div>
-
-    <div class="goal__options">
-      <button class="btn small-btn" id="remove" onclick="dialogWindow(this)">
-        <i class="ri-delete-bin-line"></i>
-      </button>
-      <button class="btn small-btn" id="history" onclick="history(this)">
-        <i class="ri-list-view"></i>
-      </button>
-      <button class="btn small-btn" id="edit" onclick="edite(this)">
-        <i class="ri-edit-line"></i>
-      </button>
-    </div>
-
-    <div class="goal__dialog hide">
-      <p class="goal__dialog-message">
-        Do you really wont to remove your progress ?
-      </p>
-      <div class="goal__dialog-buttons">
-        <button class="btn" id="remove-goal" onclick="remove(this)">
-          Remove
+      <div class="goal__task" id="${id}">
+      <div class="dropdown" id="dropdown-content">
+        <button class="dropdown__button">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
         </button>
-        <button class="btn" id="discard-change" onclick="dialogWindow(this)">
-          Discard
-        </button>
+
+        <ul class="dropdown__menu">
+          <li class="dropdown__item">
+            <i class="ri-pencil-line dropdown__icon"></i>
+            <span class="dropdown__name" id="edit" onclick="edit(this)"
+              >Edit</span
+            >
+          </li>
+
+          <li class="dropdown__item">
+            <i class="ri-list-view dropdown__icon"></i>
+            <span class="dropdown__name" id="history" onclick="history(this)"
+              >History</span
+            >
+          </li>
+
+          <li class="dropdown__item">
+            <i class="ri-delete-bin-line dropdown__icon"></i>
+            <span class="dropdown__name" id="edit" onclick="dialogWindow(this)"
+              >Remove</span
+            >
+          </li>
+        </ul>
       </div>
-    </div>
+
+      <div class="goal__inform">
+        <div class="goal__progress" id="goal-progressbar">
+            ${Math.floor(percentPointToFinish)}
+          <span class="percent">%</span>
+        </div>
+
+        <div class="hiden ${compleateStatus ? 'hide' : 'show'}">
+          <div class="goal__data">
+            <div class="goal__calculate">
+              <input
+                class="goal__amount"
+                type="number"
+                id="amount"
+                placeholder="0"
+                value="0"
+              />
+              <div class="goal__button">
+                <button
+                  id="withdraw-btn"
+                  onclick="withdraw(this)"
+                  class="button__minus"
+                >
+                  -
+                </button>
+                <button
+                  id="deposit-btn"
+                  onclick="deposit(this)"
+                  class="button__plus"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="goal__wrap">
+              <div class="lines">
+                <svg
+                  width="240"
+                  height="144"
+                  viewBox="0 0 240 144"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M-1.71609e-06 72L111 72C116.523 72 121 76.4772 121 82L121 105.382L121 144"
+                    stroke="#FCEE0A"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M240 74L129 74C123.477 74 119 69.5229 119 64L119 37V0"
+                    stroke="#FCEE0A"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="goal__statistic">
+                <div class="goal__statistic-item">
+                  <span class="cash">${accumulation}${currencyList[currency]}</span>
+                  <label>Collected</label>
+                </div>
+                <div class="goal__statistic-item">
+                  <span class="cash">15000$</span>
+                  <label>Remaining</label>
+                </div>
+                <div class="goal__statistic-item">
+                  <span class="cash">${amount}${currencyList[currency]}</span>
+                  <label>Goal</label>
+                </div>
+                <div class="goal__statistic-item">
+                  <span class="cash">${percentPointToFinish}%</span>
+                  <label>Progress</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="goal__title">${name}</div>
+
+      <div class="goal__dialog hide">
+        <p class="goal__dialog-message">
+          Do you really wont to remove your progress ?
+        </p>
+        <div class="goal__dialog-buttons">
+          <button class="btn" id="remove-goal" onclick="remove(this)">
+            Remove
+          </button>
+          <button class="btn" id="discard-change" onclick="dialogWindow(this)">
+            Discard
+          </button>
+        </div>
+      </div>
     </div>
   `;
     },
   );
+  showDropdownMenu('dropdown', '.dropdown__button');
 };
 
 const updateDashboardGoalsInfo = goalData => {
@@ -240,23 +328,22 @@ const accumulateDeposit = (searchId, idBtn) => {
 };
 
 function percentageToFinish(goalItem) {
-  goalItem.percentPointToFinish = (
-    (goalItem.accumulation / goalItem.amount) *
-    100
+  goalItem.percentPointToFinish = Math.floor(
+    (goalItem.accumulation / goalItem.amount) * 100,
   ).toFixed(2);
   saveDataLocalStorage();
 }
 
 const dialogWindow = buttonEl => {
-  const parentDiv = buttonEl.parentElement.parentElement;
+  const parentDiv = buttonEl.closest('.goal__task');
   const dialogWindow = parentDiv.querySelector('.goal__dialog');
 
-  if (!dialogWindow) {
-    parentDiv.classList.add('hide');
-    return;
-  }
+  // if (!dialogWindow) {
+  //   parentDiv.classList.add('hide');
+  //   return;
+  // }
 
-  dialogWindow.classList.remove('hide');
+  dialogWindow.classList.toggle('hide');
 };
 
 const removeGoal = goalID => {
@@ -294,7 +381,7 @@ const remove = buttonEl => {
   removeGoal(buttonEl.closest('.goal__task').id);
 };
 
-const edite = buttonEl => {
+const edit = buttonEl => {
   editeGoal(buttonEl.closest('.goal__task').id);
 };
 

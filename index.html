@@ -57,11 +57,12 @@
             <div class="dialog__container">
               <h1 class="dialog__title">New goal</h1>
               <div class="dialog__history hide" id="history-list"></div>
-  
+
               <form class="dialog__form" id="form" method="dialog">
                 <div class="dialog__data">
                   <label for="dialog__name">Name your goal</label>
                   <input
+                    class="dialog__input"
                     id="dialog-name"
                     type="text"
                     placeholder="Name of your target"
@@ -69,20 +70,22 @@
                     required
                   />
                 </div>
-  
+
                 <div class="dialog__data">
                   <label for="dialog__initial">Initial value</label>
                   <input
+                    class="dialog__input"
                     id="dialog-initial"
                     type="number"
                     placeholder="Initial value"
                     minlength="1"
                   />
                 </div>
-  
+
                 <div class="dialog__data">
                   <label for="dialog__amount">Goal amount</label>
                   <input
+                    class="dialog__input"
                     id="dialog-amount"
                     type="number"
                     placeholder="Amount of your target"
@@ -90,11 +93,14 @@
                     required
                   />
                 </div>
-  
+
                 <div class="dialog__data">
                   <label>Type of currency</label>
                   <div class="dialog__currency">
-                    <label for="dialog__currency-usd" class="dialog__currency-option">
+                    <label
+                      for="dialog__currency-usd"
+                      class="dialog__currency-option"
+                    >
                       <div class="dialog__currency-label">$</div>
                       <input
                         id="dialog__currency-usd"
@@ -104,7 +110,10 @@
                         required
                       />
                     </label>
-                    <label for="dialog__currency-eur" class="dialog__currency-option">
+                    <label
+                      for="dialog__currency-eur"
+                      class="dialog__currency-option"
+                    >
                       <div class="dialog__currency-label">€</div>
                       <input
                         id="dialog__currency-eur"
@@ -114,7 +123,10 @@
                         required
                       />
                     </label>
-                    <label for="dialog__currency-uah" class="dialog__currency-option">
+                    <label
+                      for="dialog__currency-uah"
+                      class="dialog__currency-option"
+                    >
                       <div class="dialog__currency-label">₴</div>
                       <input
                         id="dialog__currency-uah"
@@ -124,7 +136,10 @@
                         required
                       />
                     </label>
-                    <label for="dialog__currency-bit" class="dialog__currency-option">
+                    <label
+                      for="dialog__currency-bit"
+                      class="dialog__currency-option"
+                    >
                       <div class="dialog__currency-label">B</div>
                       <input
                         id="dialog__currency-bit"
@@ -137,12 +152,12 @@
                   </div>
                 </div>
               </form>
-  
+
               <div class="button__menu">
                 <button class="btn small-btn close" id="close-button">
                   Discard
                 </button>
-  
+
                 <button
                   class="btn large-btn"
                   id="button"
@@ -155,7 +170,6 @@
             </div>
           </dialog>
         </section>
-
       </div>
     </main>
     <script src="assets/js/script.js"></script>
