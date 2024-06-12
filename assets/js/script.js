@@ -166,9 +166,9 @@ const renderListGoal = () => {
       <div class="goal__task" id="${id}">
       <div class="dropdown" id="dropdown-content">
         <button class="dropdown__button">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+          <div class="dropdown__dot"></div>
+          <div class="dropdown__dot"></div>
+          <div class="dropdown__dot"></div>
         </button>
 
         <ul class="dropdown__menu">
@@ -252,20 +252,20 @@ const renderListGoal = () => {
               </div>
               <div class="goal__statistic">
                 <div class="goal__statistic-item">
-                  <span class="cash">${accumulation}${currencyList[currency]}</span>
-                  <label>Collected</label>
+                  <span class="goal__statistic-amount">${accumulation}${currencyList[currency]}</span>
+                  <label class="goal__statistic-name">Collected</label>
                 </div>
                 <div class="goal__statistic-item">
-                  <span class="cash">15000$</span>
-                  <label>Remaining</label>
+                  <span class="goal__statistic-amount">${amount - accumulation}${currencyList[currency]}</span>
+                  <label class="goal__statistic-name">Remaining</label>
                 </div>
                 <div class="goal__statistic-item">
-                  <span class="cash">${amount}${currencyList[currency]}</span>
-                  <label>Goal</label>
+                  <span class="goal__statistic-amount">${amount}${currencyList[currency]}</span>
+                  <label class="goal__statistic-name">Goal</label>
                 </div>
                 <div class="goal__statistic-item">
-                  <span class="cash">${percentPointToFinish}%</span>
-                  <label>Progress</label>
+                  <span class="goal__statistic-amount">${percentPointToFinish}%</span>
+                  <label class="goal__statistic-name">Progress</label>
                 </div>
               </div>
             </div>

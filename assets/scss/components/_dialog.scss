@@ -99,3 +99,12 @@
         }
     }
 }
+
+.hide {
+    display: none;
+}
+
+.active {
+    border: .3rem solid #E3FF73;
+    transition: all .1s;
+}
