@@ -232,20 +232,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.button__minus,
-.button__plus {
-  width: 130px;
-  height: 70px;
-  background: black;
-  color: #fcee0a;
-  font-size: 2rem;
-  border: none;
-}
-
-.button__minus {
-  border-right: 2px solid #fcee0a;
-}
-
 .hide {
   display: none;
 }
@@ -456,6 +442,21 @@ label {
 .close {
   width: 145px;
   border-radius: 3rem;
+}
+
+/* BUTTON FOR CARD */
+.button__minus,
+.button__plus {
+  width: 130px;
+  height: 70px;
+  background: black;
+  color: #fcee0a;
+  font-size: 2rem;
+  border: none;
+}
+
+.button__minus {
+  border-right: 2px solid #fcee0a;
 }
 
 .statistic__container {
