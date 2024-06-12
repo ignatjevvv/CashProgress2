@@ -57,15 +57,14 @@ dialog:not([open]) {
 
 .goal {
   font-family: "Manrope";
+  /* DIALOG WINDOW */
 }
-
 .goal__inform {
   display: flex;
   justify-content: center;
   flex-direction: column;
   height: 100%;
 }
-
 .goal__task {
   position: relative;
   display: flex;
@@ -78,7 +77,9 @@ dialog:not([open]) {
   padding: 2rem;
   overflow: hidden;
 }
-
+.goal__title {
+  font-size: 42px;
+}
 .goal__data {
   display: flex;
   justify-content: space-between;
@@ -86,7 +87,6 @@ dialog:not([open]) {
   width: 100%;
   margin: 2rem 0rem 2rem 0rem;
 }
-
 .goal__progress {
   display: flex;
   justify-content: center;
@@ -97,7 +97,6 @@ dialog:not([open]) {
   position: relative;
   align-items: baseline;
 }
-
 .goal__calculate {
   display: flex;
   flex-direction: column;
@@ -109,7 +108,6 @@ dialog:not([open]) {
   background: gray;
   overflow: hidden;
 }
-
 .goal__wrap {
   position: relative;
   width: 200px;
@@ -118,28 +116,97 @@ dialog:not([open]) {
   align-items: center;
   overflow: hidden;
 }
-
-.lines {
-  position: absolute;
+.goal__button {
+  display: flex;
+  border-top: 2px solid;
 }
-
 .goal__statistic {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 250px;
   gap: 2rem;
 }
-
 .goal__statistic-item {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-
 .goal__amount {
   height: 70px;
   text-align: center;
   font-size: 2rem;
+}
+.goal__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+.goal__dialog {
+  position: absolute;
+  background: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  top: 0;
+  left: 0;
+}
+.goal__dialog-message {
+  font-size: 2rem;
+}
+.goal__dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.goal__dialog {
+  position: absolute;
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  /* transform: translate(-50%, -50%); */
+  top: 0;
+  left: 0;
+}
+.goal__dialog-message {
+  font-size: 3rem;
+}
+.goal__dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.goal__progress,
+.goal .hiden {
+  transition: 0.2s all;
+}
+.goal__inform {
+  overflow: hidden;
+}
+.goal__task:hover .goal__progress {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+.goal__task:hover .hiden {
+  transform: translateY(-200px);
+  opacity: 1;
+}
+
+.active {
+  border: 0.3rem solid #E3FF73;
+  transition: all 0.1s;
+}
+
+.hide {
+  display: none;
+}
+
+.lines {
+  position: absolute;
 }
 
 input,
@@ -165,11 +232,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.goal__button {
-  display: flex;
-  border-top: 2px solid;
-}
-
 .button__minus,
 .button__plus {
   width: 130px;
@@ -182,34 +244,6 @@ input[type=number] {
 
 .button__minus {
   border-right: 2px solid #fcee0a;
-}
-
-.goal__title {
-  font-size: 42px;
-}
-
-/* DIALOG WINDOW */
-.goal__dialog {
-  position: absolute;
-  background: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 3rem;
-  /* transform: translate(-50%, -50%); */
-  top: 0;
-  left: 0;
-}
-
-.goal__dialog-message {
-  font-size: 3rem;
-}
-
-.goal__dialog-buttons {
-  display: flex;
-  justify-content: space-between;
 }
 
 .hide {
@@ -240,25 +274,6 @@ label {
   height: 0;
   opacity: 0;
   transition: 0.2s all;
-}
-
-.goal__progress,
-.hiden {
-  transition: 0.2s all;
-}
-
-.goal__inform {
-  overflow: hidden;
-}
-
-.goal__task:hover .goal__progress {
-  transform: translateY(-50px);
-  opacity: 0;
-}
-
-.goal__task:hover .hiden {
-  transform: translateY(-200px);
-  opacity: 1;
 }
 
 /* DROPDOWN MENU */
@@ -478,41 +493,6 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
   background-color: #E3FF73;
   border-radius: 1rem;
-}
-
-.goal__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
-}
-.goal__dialog {
-  position: absolute;
-  background: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 3rem;
-  /* transform: translate(-50%, -50%); */
-  top: 0;
-  left: 0;
-}
-.goal__dialog-message {
-  font-size: 2rem;
-}
-.goal__dialog-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.active {
-  border: 0.3rem solid #E3FF73;
-  transition: all 0.1s;
-}
-
-.hide {
-  display: none;
 }
 
 input {
