@@ -49,7 +49,8 @@ dialog:not([open]) {
 }
 
 .container {
-  width: 1280px;
+  width: 100%;
+  padding: 0 5rem;
   height: 100vh;
   justify-content: center;
   margin: 0 auto;
@@ -118,6 +119,12 @@ dialog:not([open]) {
   /* DIALOG WINDOW WHEN CLICK REMOVE GOAL */
   /* ANIMATION */
 }
+.goal__list {
+  display: grid;
+  flex-wrap: wrap;
+  gap: 4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .goal__inform {
   display: flex;
   justify-content: center;
@@ -129,7 +136,7 @@ dialog:not([open]) {
   display: flex;
   flex-direction: column;
   height: 350px;
-  width: 540px;
+  width: 100%;
   border: 2px solid #fcee0a;
   border-radius: 2rem;
   color: #fcee0a;
@@ -140,11 +147,13 @@ dialog:not([open]) {
   font-size: 42px;
 }
 .goal__data {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-content: space-between;
   height: 150px;
   width: 100%;
   margin: 2rem 0rem 2rem 0rem;
+  gap: 2rem;
 }
 .goal__progress {
   display: flex;
@@ -161,7 +170,7 @@ dialog:not([open]) {
   flex-direction: column;
   justify-content: space-between;
   height: 145px;
-  width: 230px;
+  width: 100%;
   border: 2px solid #fcee0a;
   border-radius: 1rem;
   background: gray;
@@ -169,7 +178,6 @@ dialog:not([open]) {
 }
 .goal__wrap {
   position: relative;
-  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,11 +210,6 @@ dialog:not([open]) {
   height: 70px;
   text-align: center;
   font-size: 2rem;
-}
-.goal__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
 }
 .goal__dialog {
   position: absolute;
@@ -327,7 +330,7 @@ span.percent-progress {
   height: 450px;
   overflow: scroll;
   border: 1px solid #0d0d0d;
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding: 2rem;
 }
 .dialog__history-item {
@@ -396,7 +399,7 @@ span.percent-progress {
 /* BUTTON FOR CARD */
 .button__minus,
 .button__plus {
-  width: 130px;
+  width: 100%;
   height: 70px;
   background: black;
   color: #fcee0a;
