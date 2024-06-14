@@ -240,12 +240,12 @@ const renderListGoal = () => {
                 >
                   <path
                     d="M-1.71609e-06 72L111 72C116.523 72 121 76.4772 121 82L121 105.382L121 144"
-                    stroke="#FCEE0A"
+                    stroke="#E3FF73"
                     stroke-width="2"
                   />
                   <path
                     d="M240 74L129 74C123.477 74 119 69.5229 119 64L119 37V0"
-                    stroke="#FCEE0A"
+                    stroke="#E3FF73"
                     stroke-width="2"
                   />
                 </svg>

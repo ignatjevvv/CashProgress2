@@ -2,15 +2,16 @@
 .button__menu {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .btn {
     width: 145px;
     height: 60px;
-    border: .1rem solid rgba(255, 255, 255, 0.600);
+    border: 2px solid #E3FF73;
     background-color: black;
     font-family: Arial;
-    color: white;
+    color: #E3FF73;
     font-size: 1rem;
     font-weight: 400;
     border-radius: 3rem;
@@ -41,11 +42,11 @@
     width: 100%;
     height: 70px;
     background: black;
-    color: #fcee0a;
+    color: #E3FF73;
     font-size: 2rem;
     border: none;
 }
 
 .button__minus {
-    border-right: 2px solid #fcee0a;
+    border-right: 2px solid #E3FF73;
 }

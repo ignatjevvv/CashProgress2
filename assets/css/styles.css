@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 /*=============== VARIABLES CSS ===============*/
 :root {
+  --background-color: #000000;
   --border-radius-color: #3a3939;
   --color-icon-button: #3a3939;
   /* BUTTON */
@@ -18,7 +19,7 @@
 }
 
 body {
-  background-color: #000000;
+  background-color: var(--background-color);
 }
 
 i {
@@ -50,7 +51,8 @@ dialog:not([open]) {
 
 .container {
   width: 100%;
-  padding: 0 5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   height: 100vh;
   justify-content: center;
   margin: 0 auto;
@@ -72,7 +74,7 @@ dialog:not([open]) {
 .dropdown__dot {
   height: 7px;
   width: 7px;
-  background: #fcee0a;
+  background: #E3FF73;
   border-radius: 100%;
 }
 .dropdown__menu {
@@ -137,9 +139,9 @@ dialog:not([open]) {
   flex-direction: column;
   height: 350px;
   width: 100%;
-  border: 2px solid #fcee0a;
+  border: 2px solid #E3FF73;
   border-radius: 2rem;
-  color: #fcee0a;
+  color: #E3FF73;
   padding: 2rem;
   overflow: hidden;
 }
@@ -171,7 +173,7 @@ dialog:not([open]) {
   justify-content: space-between;
   height: 145px;
   width: 100%;
-  border: 2px solid #fcee0a;
+  border: 2px solid #E3FF73;
   border-radius: 1rem;
   background: gray;
   overflow: hidden;
@@ -275,7 +277,7 @@ span.percent-progress {
   justify-content: space-between;
   color: white;
   background-color: black;
-  width: 400px;
+  max-width: 400px;
   min-height: 700px;
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
@@ -303,6 +305,7 @@ span.percent-progress {
 .dialog__currency {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 .dialog__currency-option {
   display: flex;
@@ -363,15 +366,16 @@ span.percent-progress {
 .button__menu {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .btn {
   width: 145px;
   height: 60px;
-  border: 0.1rem solid rgba(255, 255, 255, 0.6);
+  border: 2px solid #E3FF73;
   background-color: black;
   font-family: Arial;
-  color: white;
+  color: #E3FF73;
   font-size: 1rem;
   font-weight: 400;
   border-radius: 3rem;
@@ -402,13 +406,13 @@ span.percent-progress {
   width: 100%;
   height: 70px;
   background: black;
-  color: #fcee0a;
+  color: #E3FF73;
   font-size: 2rem;
   border: none;
 }
 
 .button__minus {
-  border-right: 2px solid #fcee0a;
+  border-right: 2px solid #E3FF73;
 }
 
 .statistic__container {
@@ -421,6 +425,12 @@ span.percent-progress {
   justify-content: space-evenly;
   align-items: center;
   border-radius: 0 0 2rem 2rem;
+  padding: 0 2rem;
+}
+.statistic__data {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 .statistic__count {
   font-size: 5rem;
@@ -482,10 +492,83 @@ input::-webkit-inner-spin-button {
 
 input,
 textarea {
-  color: #fcee0a;
+  color: #E3FF73;
 }
 
 .line {
   height: 0.1px;
   background-color: #0C0C0C;
+}
+
+/* For small devices */
+@media screen and (min-width: 320px) and (max-width: 1023px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .statistic__container {
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-between;
+  }
+  .statistic__data {
+    display: flex;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: space-between;
+    width: 100%;
+  }
+  .statistic__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .statistic__count {
+    font-size: 2rem;
+  }
+  .statistic__description {
+    font-size: 1rem;
+  }
+  .statistic .btn.large-btn {
+    order: 2;
+    /* Меняет порядок отображения на второй */
+  }
+  .statistic .statistic__data {
+    order: 1;
+    /* Меняет порядок отображения на первый */
+  }
+  .goal__list {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  .goal__data {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    height: auto;
+  }
+  .goal__title {
+    font-size: 24px;
+  }
+  .goal__task:hover {
+    height: 500px;
+  }
+  .goal__task:hover .goal__progress {
+    height: 0;
+    margin: 0;
+  }
+  .goal__dialog {
+    padding: 2rem;
+  }
+  .goal__dialog-buttons {
+    gap: 1rem;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+/* Styles for exactly 1024px */
+@media screen and (min-width: 1023px) and (max-width: 1440px) {
+  .goal__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
 }
