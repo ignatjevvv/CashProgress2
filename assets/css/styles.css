@@ -296,6 +296,10 @@ span.percent-progress {
   transition: stroke 0.3s ease; /* плавный переход цвета */
 }
 
+.opacity-card {
+  opacity: 0.1;
+}
+
 .dialog__container {
   display: flex;
   flex-direction: column;
@@ -451,6 +455,7 @@ span.percent-progress {
   left: 0;
   padding: 0 1.25rem;
   position: fixed;
+  transition: stroke 5s ease;
 }
 .statistic__container {
   font-family: Arial, Helvetica, sans-serif;
@@ -463,6 +468,7 @@ span.percent-progress {
   justify-content: space-evenly;
   align-items: center;
   border-radius: 2rem;
+  border: 2px solid #E3FF73;
 }
 .statistic__data {
   display: flex;
@@ -485,6 +491,7 @@ span.percent-progress {
 }
 
 .scroll {
+  transition: stroke 0.3s ease;
   background: none;
   backdrop-filter: blur(20px);
   border: 2px solid #E3FF76;

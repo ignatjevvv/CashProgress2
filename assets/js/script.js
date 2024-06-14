@@ -14,7 +14,6 @@ const goalList = document.getElementById('goal-lists');
 const goalAmountInputItem = document.getElementById('amount');
 const dialogWindows = document.getElementById('dialog');
 const historyList = document.getElementById('history-list');
-
 const labelNumberGoals = document.getElementById('number-goals');
 const labelRemainingTarget = document.getElementById('remaining-target');
 const labelCompleateGoals = document.getElementById('complete-goals');
@@ -470,3 +469,24 @@ if (!goalData.length) {
 const saveDataLocalStorage = () => {
   localStorage.setItem('data', JSON.stringify(goalData));
 };
+
+/// SCROLL TIGER
+const headerMenu = document.querySelector('.statistic__container');
+
+window.addEventListener('scroll', () => {
+  if (this.scrollY > 40) {
+    headerMenu.classList.add('scroll');
+  } else {
+    headerMenu.classList.remove('scroll');
+  }
+
+  const goalItems = document.querySelectorAll('.goal__task');
+
+  goalItems.forEach(item => {
+    if (item.getBoundingClientRect().top < 200) {
+      item.classList.add('opacity-card');
+    } else {
+      item.classList.remove('opacity-card');
+    }
+  });
+});

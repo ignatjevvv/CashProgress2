@@ -4,6 +4,7 @@
     left: 0;
     padding: 0 1.25rem;
     position: fixed;
+    transition: stroke 5s ease;
 
     &__container {
         font-family: Arial, Helvetica, sans-serif;
@@ -16,6 +17,7 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 2rem;
+        border: 2px solid #E3FF73;
     }
 
     &__data {
@@ -43,6 +45,7 @@
 }
 
 .scroll {
+    transition: stroke 0.3s ease;
     background: none;
     backdrop-filter: blur(20px);
     border: 2px solid #E3FF76;
