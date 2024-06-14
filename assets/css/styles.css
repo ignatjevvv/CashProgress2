@@ -58,66 +58,9 @@ dialog:not([open]) {
   margin: 0 auto;
 }
 
-/* DROPDOWN MENU */
-.dropdown {
-  position: absolute;
-  right: 30px;
-}
-.dropdown__button {
-  border: none;
-  display: flex;
-  gap: 0.4rem;
-  background: none;
-  width: max-content;
-  cursor: pointer;
-}
-.dropdown__dot {
-  height: 7px;
-  width: 7px;
-  background: #E3FF73;
-  border-radius: 100%;
-}
-.dropdown__menu {
-  top: 2rem;
-  right: 0;
-  position: absolute;
-  z-index: 1;
-  width: max-content;
-  padding: 1rem 1.5rem;
-  display: grid;
-  row-gap: 1.5rem;
-  border: solid 1px;
-  border-radius: 0.75rem;
-  backdrop-filter: blur(10px);
-  transform: scale(0.1);
-  transform-origin: 8rem -2rem;
-  pointer-events: none;
-  transition: opacity 0.4s, transform 0.4s;
-  opacity: 0;
-}
-.dropdown__item {
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.dropdown__item:hover {
-  color: black;
-}
-.dropdown__icon {
-  font-size: 1.4rem;
-}
-
-/* SHOW DROPDOWN MENU */
-.show-dropdown .dropdown__menu {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: initial;
-}
-
 .goal {
   font-family: "Manrope";
+  /* DROPDOWN MENU */
   /* SHOW DIALOG WINDOW WHEN CLICK REMOVE GOAL */
   /* ANIMATION */
   /* SHOW CALCULATE AND STATISTIC DATA */
@@ -214,6 +157,61 @@ dialog:not([open]) {
   height: 70px;
   text-align: center;
   font-size: 2rem;
+}
+.goal__dropdown {
+  position: absolute;
+  right: 30px;
+  /* SHOW DROPDOWN MENU */
+}
+.goal__dropdown-button {
+  border: none;
+  display: flex;
+  gap: 0.4rem;
+  background: none;
+  width: max-content;
+  cursor: pointer;
+}
+.goal__dropdown-dot {
+  height: 7px;
+  width: 7px;
+  background: #E3FF73;
+  border-radius: 100%;
+}
+.goal__dropdown-menu {
+  top: 2rem;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+  width: max-content;
+  padding: 1rem 1.5rem;
+  display: grid;
+  row-gap: 1.5rem;
+  border: solid 1px;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(10px);
+  transform: scale(0.1);
+  transform-origin: 8rem -2rem;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.4s;
+  opacity: 0;
+}
+.goal__dropdown-item {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.goal__dropdown-item:hover {
+  color: black;
+}
+.goal__dropdown-icon {
+  font-size: 1.4rem;
+}
+.show-dropdown .goal__dropdown-menu {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: initial;
 }
 .goal__dialog {
   position: absolute;

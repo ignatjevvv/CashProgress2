@@ -63,7 +63,7 @@ const removeClassActiveRadio = () => {
 /// SHOW DROPDOWN MENU
 
 const showDropdownMenu = (dropdownClass, button) => {
-  const dropdownButtons = document.querySelectorAll(button);
+  const dropdownButtons = document.querySelectorAll(`.${button}`);
 
   if (dropdownButtons.length === 0) {
     console.warn('No dropdown buttons found');
@@ -85,11 +85,11 @@ const showDropdownMenu = (dropdownClass, button) => {
 };
 
 const closeDropdownMenu = () => {
-  const dropdownItems = document.querySelectorAll('.dropdown__name');
+  const dropdownItems = document.querySelectorAll('.goal__dropdown-name');
   console.log(dropdownItems);
   dropdownItems.forEach(item => {
     item.addEventListener('click', () => {
-      const dropdown = item.closest('.dropdown');
+      const dropdown = item.closest('.goal__dropdown');
       dropdown.classList.toggle('show-dropdown');
     });
   });
@@ -164,31 +164,31 @@ const renderListGoal = () => {
     }) => {
       goalList.innerHTML += `
       <div class="goal__task" id="${id}">
-      <div class="dropdown" id="dropdown-content">
-        <button class="dropdown__button">
-          <div class="dropdown__dot"></div>
-          <div class="dropdown__dot"></div>
-          <div class="dropdown__dot"></div>
+      <div class="goal__dropdown" id="dropdown-content">
+        <button class="goal__dropdown-button">
+          <div class="goal__dropdown-dot"></div>
+          <div class="goal__dropdown-dot"></div>
+          <div class="goal__dropdown-dot"></div>
         </button>
 
-        <ul class="dropdown__menu">
-          <li class="dropdown__item">
-            <i class="ri-pencil-line dropdown__icon"></i>
-            <span class="dropdown__name" id="edit" onclick="edit(this)"
+        <ul class="goal__dropdown-menu">
+          <li class="goal__dropdown-item">
+            <i class="ri-pencil-line goal__dropdown-icon"></i>
+            <span class="goal__dropdown-name" id="edit" onclick="edit(this)"
               >Edit</span
             >
           </li>
 
-          <li class="dropdown__item">
-            <i class="ri-list-view dropdown__icon"></i>
-            <span class="dropdown__name" id="history" onclick="history(this)"
+          <li class="goal__dropdown-item">
+            <i class="ri-list-view goal__dropdown-icon"></i>
+            <span class="goal__dropdown-name" id="history" onclick="history(this)"
               >History</span
             >
           </li>
 
-          <li class="dropdown__item">
-            <i class="ri-delete-bin-line dropdown__icon"></i>
-            <span class="dropdown__name" id="edit" onclick="dialogWindow(this)"
+          <li class="goal__dropdown-item">
+            <i class="ri-delete-bin-line goal__dropdown-icon"></i>
+            <span class="goal__dropdown-name" id="edit" onclick="dialogWindow(this)"
               >Remove</span
             >
           </li>
@@ -293,7 +293,7 @@ const renderListGoal = () => {
     },
   );
 
-  showDropdownMenu('dropdown', '.dropdown__button');
+  showDropdownMenu('goal__dropdown', 'goal__dropdown-button');
 };
 
 const updateDashboardGoalsInfo = goalData => {
