@@ -1,12 +1,17 @@
 .statistic {
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    padding: 0 1.25rem;
+    position: fixed;
+
     &__container {
         font-family: Arial, Helvetica, sans-serif;
         width: 100%;
         height: 150px;
         background-color: #E3FF73;
-        margin-bottom: 3rem;
-        margin-top: 2rem;
-        padding: 2rem;
+        margin-top: 3rem;
+        padding: 0 2rem;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -35,4 +40,11 @@
         font-size: 1.4rem;
         font-family: "Manrope", sans-serif;
     }
+}
+
+.scroll {
+    background: none;
+    backdrop-filter: blur(20px);
+    border: 2px solid #E3FF76;
+    color: #E3FF73;
 }
