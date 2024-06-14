@@ -145,6 +145,9 @@ dialog:not([open]) {
   flex-direction: column;
   gap: 0.5rem;
 }
+.goal__statistic-item:nth-last-child(3), .goal__statistic-item:last-child {
+  align-items: flex-end;
+}
 .goal__statistic-amount {
   font-weight: 600;
 }
@@ -256,8 +259,17 @@ dialog:not([open]) {
   background: #E3FF73;
   color: black;
 }
+.goal__task:hover .goal__dropdown-dot {
+  background: black;
+}
+.goal__task:hover .line {
+  stroke: black; /* измените на нужный цвет при наведении */
+}
+.goal__task:hover .button__minus {
+  border-right: 1px solid #3a3939;
+}
 
-.lines {
+.svg-container {
   position: absolute;
 }
 
@@ -273,6 +285,10 @@ span.percent {
 span.percent-progress {
   font-size: 42px;
   font-weight: 600;
+}
+
+.svg-container .line {
+  transition: stroke 0.3s ease; /* плавный переход цвета */
 }
 
 .dialog__container {

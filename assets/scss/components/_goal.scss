@@ -88,6 +88,10 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+
+            &:nth-last-child(3), &:last-child {
+                align-items: flex-end;
+            }
         }
 
         &-amount {
@@ -232,10 +236,22 @@
         background: #E3FF73;
         color: black;
     }
+
+    &__task:hover &__dropdown-dot {
+        background: black;
+    }
+
+    &__task:hover .line {
+        stroke: black; /* измените на нужный цвет при наведении */
+    }
+
+    &__task:hover .button__minus {
+        border-right: 1px solid #3a3939;
+    }
 }
 
 
-.lines {
+.svg-container {
     position: absolute;
 }
 
@@ -251,4 +267,9 @@ span.percent {
 span.percent-progress {
     font-size: 42px;
     font-weight: 600;
+}
+
+
+.svg-container .line {
+    transition: stroke 0.3s ease; /* плавный переход цвета */
 }

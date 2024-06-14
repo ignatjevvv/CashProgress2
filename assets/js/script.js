@@ -230,24 +230,10 @@ const renderListGoal = () => {
             </div>
 
             <div class="goal__wrap">
-              <div class="lines">
-                <svg
-                  width="240"
-                  height="144"
-                  viewBox="0 0 240 144"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M-1.71609e-06 72L111 72C116.523 72 121 76.4772 121 82L121 105.382L121 144"
-                    stroke="#E3FF73"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M240 74L129 74C123.477 74 119 69.5229 119 64L119 37V0"
-                    stroke="#E3FF73"
-                    stroke-width="2"
-                  />
+              <div class="svg-container">
+                <svg width="240" height="144" viewBox="0 0 240 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="line" d="M-1.71609e-06 72L111 72C116.523 72 121 76.4772 121 82L121 105.382L121 144" stroke="#E3FF73" stroke-width="2"></path>
+                    <path class="line" d="M240 74L129 74C123.477 74 119 69.5229 119 64L119 37V0" stroke="#E3FF73" stroke-width="2"></path>
                 </svg>
               </div>
               <div class="goal__statistic">
