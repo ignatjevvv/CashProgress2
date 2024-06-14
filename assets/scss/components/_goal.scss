@@ -71,6 +71,7 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        padding: 0 .5rem;
     }
 
     &__button {
@@ -235,6 +236,10 @@
     &__task:hover {
         background: #E3FF73;
         color: black;
+    }
+
+    &__task:hover &__dialog {
+        color: #E3FF73;;
     }
 
     &__task:hover &__dropdown-dot {
