@@ -82,25 +82,6 @@
     }
 }
 
-
-// @media screen and (min-width: 600px) {
-//     .goal {
-//         &__list {
-//             grid-template-columns: repeat(2, minmax(0, 1fr));
-//             gap: 2rem;
-//         }
-//     }
-// }
-
-// @media screen and (min-width: 424px) {
-//     .goal {
-//         &__list {
-//             grid-template-columns: repeat(1, minmax(0, 1fr));
-//             gap: 2rem;
-//         }
-//     }
-// }
-/* Styles for exactly 1024px */
 @media screen and (min-width: 1023px) and (max-width: 1440px) {
     .goal {
         &__list {

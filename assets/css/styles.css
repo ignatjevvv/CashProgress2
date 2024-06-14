@@ -118,8 +118,10 @@ dialog:not([open]) {
 
 .goal {
   font-family: "Manrope";
-  /* DIALOG WINDOW WHEN CLICK REMOVE GOAL */
+  /* SHOW DIALOG WINDOW WHEN CLICK REMOVE GOAL */
   /* ANIMATION */
+  /* SHOW CALCULATE AND STATISTIC DATA */
+  /* HOVER COLOR FROM GOAL CARDS */
 }
 .goal__list {
   display: grid;
@@ -251,6 +253,10 @@ dialog:not([open]) {
 .goal__task:hover .hiden {
   transform: translateY(-200px);
   opacity: 1;
+}
+.goal__task:hover {
+  background: #E3FF73;
+  color: black;
 }
 
 .lines {
@@ -565,7 +571,6 @@ textarea {
     width: 100%;
   }
 }
-/* Styles for exactly 1024px */
 @media screen and (min-width: 1023px) and (max-width: 1440px) {
   .goal__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));

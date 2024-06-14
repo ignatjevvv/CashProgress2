@@ -108,7 +108,7 @@
         font-size: 2rem;
     }
 
-    /* DIALOG WINDOW WHEN CLICK REMOVE GOAL */
+    /* SHOW DIALOG WINDOW WHEN CLICK REMOVE GOAL */
     &__dialog {
         position: absolute;
         background: rgb(0, 0, 0);
@@ -132,6 +132,7 @@
     }
 
     /* ANIMATION */
+    /* SHOW CALCULATE AND STATISTIC DATA */
     .hiden {
         height: 0;
         opacity: 0;
@@ -157,6 +158,12 @@
         opacity: 1;
     }
 
+    /* HOVER COLOR FROM GOAL CARDS */
+
+    &__task:hover {
+        background: #E3FF73;
+        color: black;
+    }
 }
 
 
