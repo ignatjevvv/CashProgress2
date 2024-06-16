@@ -91,7 +91,8 @@
             flex-direction: column;
             gap: 0.5rem;
 
-            &:nth-last-child(3), &:last-child {
+            &:nth-last-child(3),
+            &:last-child {
                 align-items: flex-end;
             }
         }
@@ -240,7 +241,8 @@
     }
 
     &__task:hover &__dialog {
-        color: #E3FF73;;
+        color: #E3FF73;
+        ;
     }
 
     &__task:hover &__dropdown-dot {
@@ -248,7 +250,8 @@
     }
 
     &__task:hover .line {
-        stroke: black; /* измените на нужный цвет при наведении */
+        stroke: black;
+        /* измените на нужный цвет при наведении */
     }
 
     &__task:hover .button__minus {
@@ -277,10 +280,11 @@ span.percent-progress {
 
 
 .svg-container .line {
-    transition: stroke 0.3s ease; /* плавный переход цвета */
+    transition: stroke 0.3s ease;
 }
 
 
 .opacity-card {
-    opacity: .1;
+    opacity: 0.3;
+    // filter: grayscale(1);
 }

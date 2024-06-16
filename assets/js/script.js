@@ -470,11 +470,11 @@ const saveDataLocalStorage = () => {
   localStorage.setItem('data', JSON.stringify(goalData));
 };
 
-/// SCROLL TIGER
+/// SCROLL TRIGER
 const headerMenu = document.querySelector('.statistic__container');
 
 window.addEventListener('scroll', () => {
-  if (this.scrollY > 40) {
+  if (this.scrollY > 45) {
     headerMenu.classList.add('scroll');
   } else {
     headerMenu.classList.remove('scroll');
@@ -483,7 +483,8 @@ window.addEventListener('scroll', () => {
   const goalItems = document.querySelectorAll('.goal__task');
 
   goalItems.forEach(item => {
-    if (item.getBoundingClientRect().top < 200) {
+    // 50 or 200
+    if (item.getBoundingClientRect().top < 100) {
       item.classList.add('opacity-card');
     } else {
       item.classList.remove('opacity-card');

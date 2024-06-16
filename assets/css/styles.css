@@ -268,7 +268,8 @@ dialog:not([open]) {
   background: black;
 }
 .goal__task:hover .line {
-  stroke: black; /* измените на нужный цвет при наведении */
+  stroke: black;
+  /* измените на нужный цвет при наведении */
 }
 .goal__task:hover .button__minus {
   border-right: 1px solid #3a3939;
@@ -293,11 +294,11 @@ span.percent-progress {
 }
 
 .svg-container .line {
-  transition: stroke 0.3s ease; /* плавный переход цвета */
+  transition: stroke 0.3s ease;
 }
 
 .opacity-card {
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 .dialog__container {
@@ -557,15 +558,19 @@ textarea {
 }
 
 /* For small devices */
-@media screen and (min-width: 320px) and (max-width: 1023px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
   .statistic__container {
-    flex-direction: column;
+    flex-direction: row;
+    height: 80px;
     padding: 1rem;
     justify-content: space-between;
+    gap: 2rem;
+    margin-top: 1rem;
+    border-radius: 2rem;
   }
   .statistic__data {
     display: flex;
@@ -584,6 +589,7 @@ textarea {
   }
   .statistic__description {
     font-size: 1rem;
+    display: none;
   }
   .statistic .btn.large-btn {
     order: 2;
@@ -592,6 +598,9 @@ textarea {
   .statistic .statistic__data {
     order: 1;
     /* Меняет порядок отображения на первый */
+  }
+  .goal {
+    padding-top: 9rem;
   }
   .goal__list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -603,6 +612,12 @@ textarea {
   }
   .goal__title {
     font-size: 24px;
+  }
+  .goal__task {
+    height: 280px;
+  }
+  .goal__progress {
+    font-size: 96px;
   }
   .goal__task:hover {
     height: 500px;
@@ -622,6 +637,12 @@ textarea {
   }
 }
 @media screen and (min-width: 1023px) and (max-width: 1440px) {
+  .goal__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .goal__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
